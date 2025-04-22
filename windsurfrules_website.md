@@ -117,38 +117,246 @@ Figma で Design‑Token JSON をエクスポート → :root に自動反映
 4. CI/CD 設定（GitHub Actions → GitHub Pages／Vercel）  
 5. ステージングで動作確認 → 本番公開  
 
-## 6. デザインガイド
-- **カラーパレット**  
-  - プライマリ：#cc0000  
-  - セカンダリ：#333333 / #555555  
-  - ニュートラル：#fdfdfd / #ffffff  
-- **タイポグラフィ**  
-  - 見出し：Playfair Display, serif  
-  - 本文：Josefin Sans, sans-serif  
-- **ボタン**  
-  - 角丸 4px / ホバー時暗色化  
-  
-  ## 追加・調整ポイント
+## 6. デザインガイドとコンポーネント仕様
 
-### 1. タイポグラフィを 2 段構えに
-| 役割 | フォント例 | ねらい |
-| --- | --- | --- |
-| 見出し (H1–H3) | **"Playfair Display"**  →  “Optical Size” を有効にして細部を滑らかに | ハイブランドの様なクラシカル感 |
-| 本文・UI | **"Inter" もしくは "Poppins"** | シャープでモダンな可読性 |
+### 6.1 カラーシステム
 
-➡️ CSS `font-feature-settings: "liga" 1, "dlig" 1;` を指定すると上質な合字が効きます。  
-
-### 2. ハイエンド配色ルール
 ```css
 :root {
-  /* brand */
-  --primary: #b80000;   /* ワインレッドで深みを追加 */
-  --accent : #d4af37;   /* リッチゴールド */
-  /* greys */
-  --grey-900: #111;
-  --grey-700: #333;
-  --grey-50 : #fafafa;
+  /* ブランドカラー */
+  --color-primary: #b80000;      /* ワインレッド（メインカラー） */
+  --color-primary-light: #d40000; /* ホバー・アクティブ状態 */
+  --color-primary-dark: #900000;  /* プレス状態 */
+  --color-secondary: #333333;     /* テキスト・見出し */
+  --color-accent: #d4af37;        /* ゴールド（アクセント） */
+  
+  /* グレースケール */
+  --color-grey-900: #111111;      /* 最も暗いテキスト */
+  --color-grey-700: #333333;      /* 標準テキスト */
+  --color-grey-500: #555555;      /* 補足テキスト */
+  --color-grey-300: #cccccc;      /* ボーダー */
+  --color-grey-100: #f5f5f5;      /* 背景アクセント */
+  --color-grey-50: #fafafa;       /* 薄い背景 */
+
+  /* 背景色 */
+  --color-bg: #ffffff;            /* 標準背景 */
+  --color-bg-alt: #f9f9f9;        /* 代替背景 */
+  
+  /* 機能色 */
+  --color-success: #00b050;       /* 成功 */
+  --color-warning: #ffa000;       /* 警告 */
+  --color-error: #d32f2f;         /* エラー */
+  --color-info: #2979ff;          /* 情報 */
 }
+```
+
+**実装ルール:**
+1. すべての色指定は必ずCSS変数を使用すること
+2. 重要な要素は必ずプライマリカラーに統一
+3. アクセントカラー（ゴールド）は強調したい箇所のみに使用
+
+### 6.2 タイポグラフィシステム
+
+```css
+:root {
+  /* フォントファミリー */
+  --font-heading: 'Playfair Display', serif;  /* 見出し用 */
+  --font-body: 'Inter', sans-serif;          /* 本文用 */
+  --font-sub: 'Poppins', sans-serif;         /* UI要素・補足用 */
+  
+  /* フォントサイズ */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem;  /* 36px */
+  --text-5xl: 3rem;     /* 48px */
+  
+  /* 行の高さ */
+  --leading-none: 1;      /* 行の高さなし */
+  --leading-tight: 1.25;  /* 密集した行の高さ */
+  --leading-normal: 1.5;  /* 通常の行の高さ */
+  --leading-loose: 1.8;   /* 広い行の高さ */
+  
+  /* レタースペーシング */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+}
+```
+
+**実装ルール:**
+1. 見出しには必ず `--font-heading` を使用
+2. 本文には必ず `--font-body` を使用
+3. 見出しサイズは階層に応じて統一（H1: --text-5xl, H2: --text-4xl, H3: --text-3xl）
+4. すべての見出しに `font-feature-settings: "liga" 1, "dlig" 1;` を適用
+
+### 6.3 共通コンポーネント仕様
+
+#### ヘッダー
+- 固定位置（スクロール時も画面上部に固定）
+- 白背景 + 下部境界線（--color-grey-300）
+- ロゴ左、ナビゲーション右配置
+- モバイル時はハンバーガーメニュー（右上に配置）
+- ナビゲーションリンクは均等配置、アクティブページは下線装飾
+- 高さ: 80px（デスクトップ）, 60px（モバイル）
+
+```html
+<header class="header">
+  <div class="header-content">
+    <div class="logo">...</div>
+    <nav class="global-nav">...</nav>
+    <button class="menu-toggle">...</button>
+  </div>
+</header>
+```
+
+#### ページヘッダー（各ページ共通）
+- サイト共通のページタイトルエリア
+- 背景: グラデーション または 画像背景（オーバーレイ付き）
+- 見出し: 中央配置、--font-heading, --text-5xl
+- 下部に装飾ライン（--color-primary, 幅100px, 高さ3px）
+
+```html
+<section class="page-header">
+  <div class="container">
+    <h2 class="page-title">ページタイトル</h2>
+  </div>
+</section>
+```
+
+#### テーブル
+- ヘッダー: プライマリカラー背景（#b80000）、白文字
+- 交互の行: #f5f5f5 / #ffffff
+- 全体をbox-shadowで囲む
+- 角丸: 8px
+- セル内の余白: 15-20px
+
+```html
+<div style="overflow: hidden; border-radius: 8px; box-shadow: var(--shadow-soft);">
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr style="background-color: var(--color-primary); color: white;">...</tr>
+    <tr style="background-color: #f5f5f5;">...</tr>
+    <tr>...</tr>
+  </table>
+</div>
+```
+
+#### アコーディオン
+- 各項目は独立したカード形式
+- 境界線ではなく影（box-shadow）でセパレート
+- 左側に色付きのアクセントバー（--color-primary, 幅5px）
+- ヘッダーに展開/折りたたみアイコン（+/-）
+- トランジション: 高さの変化はスムーズに（0.3s ease）
+
+```html
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleAccordion(this)">
+    <h3>タイトル</h3>
+    <span class="accordion-icon">+</span>
+  </div>
+  <div class="accordion-content">...</div>
+</div>
+```
+
+#### ボタン
+- プライマリボタン: --color-primary 背景、白文字
+- セカンダリボタン: 白背景、--color-primary 境界線と文字
+- 角丸: 4px
+- パディング: 12px 24px
+- ホバー効果: 暗くなる（brightness: 0.9）
+- トランジション: 0.3s ease all
+
+```html
+<a href="#" class="btn btn-primary">プライマリボタン</a>
+<a href="#" class="btn btn-secondary">セカンダリボタン</a>
+```
+
+#### カード
+- 白背景
+- 角丸: 8px
+- 影: var(--shadow-soft)
+- 内部パディング: 25-30px
+- 画像を含む場合は上部に配置、角丸処理
+
+```html
+<div class="card">
+  <div class="card-image">...</div>
+  <div class="card-content">...</div>
+</div>
+```
+
+#### フッター
+- 背景: --color-grey-900（暗め）
+- 文字色: 白（ロゴ、リンク）、--color-grey-300（テキスト）
+- 3カラムレイアウト（ロゴ+説明、リンク、SNS）
+- コピーライト部分は横線で区切り、セパレート
+
+```html
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">...</div>
+    <div class="copyright">...</div>
+  </div>
+</footer>
+```
+
+### 6.4 レイアウト・スペーシング
+
+```css
+:root {
+  /* シャドウ */
+  --shadow-soft: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-medium: 0 10px 15px rgba(0,0,0,0.07), 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-hard: 0 20px 25px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.1);
+  
+  /* スペーシング */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+  
+  /* セクション間隔 */
+  --section-space: 90px;  /* セクション間の標準間隔 */
+  
+  /* コンテナ */
+  --container-max: 1200px; /* 最大コンテナ幅 */
+  --container-padding: 20px; /* 左右パディング */
+}
+```
+
+**実装ルール:**
+1. すべてのページで同じセクション間隔を使用する
+2. コンテナ幅は統一（max-width: var(--container-max)）
+3. セクションの背景色は交互に変える（白/薄灰色）
+4. 重要なセクションには必ず装飾的な区切り線を追加
+
+### 6.5 レスポンシブデザイン
+
+1. **ブレークポイント**
+   - モバイル: ~767px
+   - タブレット: 768px~1023px
+   - デスクトップ: 1024px~
+
+2. **グリッドシステム**
+   - デスクトップでは3~4カラム
+   - タブレットでは2カラム
+   - モバイルでは1カラム
+
+3. **フォントサイズ調整**
+   - モバイルでは見出しサイズを80%に縮小
+
+4. **コンポーネント調整**
+   - テーブル: モバイルではスクロール可能なコンテナで包む
+   - ナビゲーション: モバイルではドロワーメニュー
+   - 余白: モバイルでは縮小（--section-space: 60px）
 
 3. マイクロインタラクション
 

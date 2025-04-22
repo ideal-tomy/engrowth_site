@@ -3,13 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>u5b66u751fu5411u3051 | Engrowth Official Site</title>
-    <meta name="description" content="Engrowthu306eu5b66u751fu5411u3051u82f1u8a9eu5b66u7fd2u30d7u30edu30b0u30e9u30e0u3002u6b21u4e16u4ee3u30eau30fcu30c0u30fcu3068u3057u3066u306eu82f1u8a9eu529bu3068u56fdu969bu611fu899au3092u990au3046u30abu30eau30adu30e5u30e9u30e0u3092u3054u7d39u4ecbu3057u307eu3059u3002">
+    <title>学生向け | Engrowth Official Site</title>
+    <meta name="description" content="Engrowthの学生向け英語学習プログラム。次世代リーダーとしての英語力と国際感覚を養うカリキュラムをご紹介します。">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <!-- Webu30d5u30a9u30f3u30c8 -->
+    <!-- Webフォント -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 基本スタイル */
+        :root {
+            --primary: #b80000;
+            --primary-light: #d42626;
+            --primary-dark: #8b0000;
+            --accent: #d4af37;
+            --accent-light: #e6c458;
+            --accent-dark: #b89020;
+            --grey-700: #333;
+            --grey-500: #666;
+            --grey-200: #ddd;
+            --grey-100: #eee;
+            --grey-50: #fafafa;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--grey-700);
+            background-color: var(--white);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* ヘッダースタイル */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: var(--space-sm) 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-sm);
+        }
+        
+        .logo h1 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        .logo .tagline {
+            font-size: 0.8rem;
+            color: var(--grey-500);
+            margin: 0;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* ナビゲーションスタイル */
+        .global-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .global-nav li {
+            margin: 0 var(--space-sm);
+        }
+        
+        .global-nav a {
+            text-decoration: none;
+            color: var(--grey-700);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: var(--space-xs) 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .global-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .global-nav a.active {
+            color: var(--primary);
+        }
+        
+        .global-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        /* ページヘッダー */
+        .page-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-md) 0;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        /* コンテナ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-sm);
+        }
+        
+        /* セクションスタイル */
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--grey-700);
+            margin-bottom: var(--space-md);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        /* サービス紹介 */
+        .service-intro {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .service-intro .container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .service-image {
+            flex: 1;
+        }
+        
+        .service-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .service-text {
+            flex: 1;
+        }
+        
+        .service-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* 特徴カード */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .feature-card {
+            background-color: var(--grey-50);
+            padding: var(--space-md);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .text-block {
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-size: 1.1rem;
+        }
+        
+        /* カリキュラムテーブル */
+        .curriculum-table {
+            width: 100%;
+            margin-bottom: var(--space-lg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .table-row {
+            display: flex;
+        }
+        
+        .table-row.header {
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .table-row:nth-child(odd):not(.header) {
+            background-color: var(--grey-50);
+        }
+        
+        .table-row:nth-child(even):not(.header) {
+            background-color: var(--white);
+        }
+        
+        .level-cell, .content-cell {
+            padding: 15px 20px;
+        }
+        
+        .level-cell {
+            flex: 0 0 120px;
+            font-weight: 500;
+        }
+        
+        .content-cell {
+            flex: 1;
+        }
+        
+        /* 留学成功への３ステップセクション */
+        .study-steps {
+            margin-bottom: var(--space-lg);
+            background-color: var(--grey-50);
+            padding: var(--space-md) 0;
+        }
+        
+        .steps-container {
+            margin-bottom: var(--space-md);
+        }
+        
+        .step-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            padding: var(--space-md);
+            text-align: center;
+        }
+        
+        .step-highlight {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .study-description {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            padding: var(--space-md);
+        }
+        
+        .study-description h4 {
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .study-description h5 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .essay-features, .support-features, .benefits {
+            padding-left: 20px;
+            margin: var(--space-sm) 0;
+        }
+        
+        .essay-features li, .support-features li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .essay-features li:before, .support-features li:before {
+            content: '\2022';  /* ブレットポイント */
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .benefits li {
+            margin-bottom: 8px;
+            list-style-type: none;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -17,20 +364,20 @@
             <div class="logo">
                 <a href="/">
                     <h1>Engrowth Official Site</h1>
-                    <p class="tagline">u6d77u5916u5927u5b66u5728u7c4d/u51fau8eabu306eu5c02u5c5eu30b3u30f3u30b5u30ebu30bfu30f3u30c8u304bu3089u73feu5730u3067u4f7fu3048u308bu751fu304du305fu82f1u8a9eu3092u5b66u3076</p>
+                    <p class="tagline">海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
                 </a>
             </div>
             <nav class="global-nav">
                 <ul>
-                    <li><a href="/">u30c8u30c3u30d7u30dau30fcu30b8</a></li>
-                    <li><a href="/about/">u30d3u30b8u30e7u30f3</a></li>
-                    <li><a href="/service/business/">u30d3u30b8u30cdu30b9u30d1u30fcu30bdu30f3u5411u3051</a></li>
-                    <li><a href="/service/students/" class="active">u5b66u751fu5411u3051</a></li>
-                    <li><a href="/service/vision/">u793eu4f1au8ca2u732eu30fbu30dfu30c3u30b7u30e7u30f3</a></li>
-                    <li><a href="/contact/">u304au554fu3044u5408u308fu305b</a></li>
+                    <li><a href="../../index.html">トップページ</a></li>
+                    <li><a href="../../about/index.html">ビジョン</a></li>
+                    <li><a href="../business/index.html">ビジネスパーソン向け</a></li>
+                    <li><a href="../students/index.html" class="active">学生向け</a></li>
+                    <li><a href="../vision/index.html">社会貢献・ミッション</a></li>
+                    <li><a href="../../contact/index.html">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="u30e1u30cbu30e5u30fc">
+            <button class="menu-toggle" aria-label="メニュー">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -41,102 +388,329 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h2 class="page-title">u5b66u751fu5411u3051</h2>
+                <h2 class="page-title">学生向け</h2>
             </div>
         </section>
 
         <section class="service-intro">
             <div class="container">
                 <div class="service-image">
-                    <img src="../../assets/images/students-group.jpg" alt="u5b66u751fu306eu30b0u30ebu30fcu30d7u30efu30fcu30afu306eu69d8u5b50">
+                    <img src="../../assets/images/students-group.jpg" alt="学生のグループワークの様子">
                 </div>
                 <div class="service-text">
-                    <h3>u6b21u4e16u4ee3u30eau30fcu30c0u30fcu3068u306eu5b66u3073u5408u3044</h3>
-                    <p>u82f1u8a9eu3092u5358u306au308bu8a00u8a9eu3068u3057u3066u3067u306fu306au304fu3001u4e16u754cu3068u3064u306au304cu308bu30c4u30fcu30ebu3068u3057u3066u8eabu306bu4ed8u3051u307eu3057u3087u3046u3002Engrowthu3067u306fu3001u56fdu5185u5916u306eu512au79c0u306au5b66u751fu305fu3061u3068u306eu4ea4u6d41u3092u901au3058u3066u3001u82f1u8a9eu529bu3068u540cu6642u306bu30b0u30edu30fcu30d0u30ebu306au8996u70b9u3092u80b2u307fu307eu3059u3002</p>
-                    <p>u5b66u751fu540cu58ebu306eu5b66u3073u5408u3044u306eu5834u3067u306fu3001u5358u306au308bu82f1u4f1au8a71u306eu7df4u7fd2u3060u3051u3067u306au304fu3001<strong>u304au4e92u3044u306eu6587u5316u3084u7d4cu9a13u3092u5171u6709</strong>u3057u3001u8996u91ceu3092u5e83u3052u308bu3053u3068u304cu3067u304du307eu3059u3002</p>
+                    <h3>次世代リーダーとの学び合い</h3>
+                    <p>英語を単なる言語としてではなく、世界とつながるツールとして身に付けましょう。Engrowthでは、国内外の優秀な学生たちとの交流を通じて、英語力と同時にグローバルな視点を育みます。</p>
+                    <p>学生同士の学び合いの場では、単なる英会話の練習だけでなく、<strong>お互いの文化や経験を共有</strong>し、視野を広げることができます。</p>
                 </div>
             </div>
         </section>
 
-        <section class="study-abroad">
+
+
+        <section class="study-steps">
             <div class="container">
-                <h3 class="section-title">u7559u5b66u652fu63f4u30fbu5b9fu7e3eu7d39u4ecb</h3>
-                <div class="study-abroad-content">
-                    <div class="study-abroad-image">
-                        <img src="../../assets/images/study-abroad.jpg" alt="u6d77u5916u5927u5b66u306eu30adu30e3u30f3u30d1u30b9">
+                <h3 class="section-title">留学成功への３ステップ</h3>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-content">
+                            <p class="step-highlight">自信を持って英語で自己表現できる！</p>
+                            <p class="step-highlight">授業で必要な英語力を準備！</p>
+                            <p class="step-highlight">自然に外国人と話せる気持ちを身に付ける！</p>
+                        </div>
                     </div>
-                    <div class="study-abroad-text">
-                        <h4>u6d77u5916u5927u5b66u3078u306eu9053</h4>
-                        <p>Engrowthu306eu30d7u30edu30b0u30e9u30e0u306fu3001u5358u306au308bu82f1u8a9eu5b66u7fd2u306bu7559u307eu3089u305au3001u6d77u5916u5927u5b66u3078u306eu5165u5b66u3092u76eeu6307u3059u5b66u751fu3092u5f37u529bu306bu30b5u30ddu30fcu30c8u3057u307eu3059u3002</p>
-                        <ul class="achievement-list">
-                            <li><span class="highlight">u51686u540du304cu6d77u5916u540du9580u5927u5b66u306bu5408u683c</span>（2024u5e74u5b9fu7e3e）</li>
-                            <li><span class="highlight">TOEFLu30b9u30b3u30a2u5e73u5747 25u30ddu30a4u30f3u30c8u4e0au6607</span>（6u30f6u6708u30d7u30edu30b0u30e9u30e0u4feeu4e86u751f）</li>
-                            <li><span class="highlight">u5409u7965u5bfau30dfu30fcu30c6u30a3u30f3u30b0u82f1u8a9eu30b9u30d4u30fcu30c1u5927u4f1au3067u512au52dd</span>（2023u5e74u3001u9ad8u6821u751fu90e8u9580）</li>
-                        </ul>
-                    </div>
+                </div>
+                
+                <div class="study-description">
+                    <p>多くの日本人留学生が直面する「英語での自己表現」という壁。その克服には、体系的な準備と実践的なトレーニングが不可欠です。</p>
+                    
+                    <h4>①基礎英語力の底上げ</h4>
+                    <p>英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、英語を聞くことや話すことになれることが何よりも重要。スピーキング、リスニングを中心に、発話することで聞き取れるようになる脳のメカニズムを利用し、英語への苦手意識や恐怖心が無くなるように基礎英語力の底上げを行います。</p>
+                    
+                    <h4>②エッセイ添削の重要性</h4>
+                    <p>アメリカの大学で成功するためには、学術的なライティングスキルが必要不可欠です。多くの日本人留学生が直面する最大の課題の一つが、英語でのアカデミックライティングの習得です。</p>
+                    
+                    <h5>なぜ英語でのエッセイは難しいのか</h5>
+                    <p>英語で記述する論文では、エッセイやレポートの評価において「内容」だけでなく「構造」が重視されます。優れた考察や分析を行っても、学術界で求められる独特の形式やルールに従っていなければ、高評価を得ることは困難です。</p>
+                    
+                    <p>主な特徴として：</p>
+                    <ul class="essay-features">
+                        <li>明確な論理構造が必須（Introduction、Thesis,、Body Paragraphs、Conclusion）</li>
+                        <li>アカデミックな語彙や表現の使用が求められる</li>
+                        <li>適切な引用方法（APA、MLAなど）の厳密な遵守</li>
+                        <li>批判的思考に基づく議論の展開</li>
+                        <li>客観的な証拠や具体例による主張の裏付け</li>
+                    </ul>
+                    
+                    <p>起承転結のような定型的な型が、日本語と英語では異なっており、その違いを理解していないと優れた考察に基づく論文やエッセイ、レポートも正当に評価されないといったケースが、留学生の共通した課題です。</p>
+                    
+                    <h5>私たちのサポート体制</h5>
+                    <p>当社では、海外の名門大学出身の専任コンサルタントが、きめ細かな添削サービスを提供しています。</p>
+                    
+                    <ul class="support-features">
+                        <li>英語のエッセイで求められる文章構成の基礎から応用まで</li>
+                        <li>各大学・学部特有の要求事項への対応</li>
+                        <li>添削だけでなく、改善点の詳細な解説と実践的なアドバイス</li>
+                        <li>オンラインでの個別相談と継続的なサポート</li>
+                    </ul>
+                    
+                    <h5>なぜ事前準備が重要か</h5>
+                    <p>海外の大学では、入学後すぐに本格的なアカデミックライティングが求められます。準備が不十分な状態で留学を開始すると、授業についていけない、課題をこなせないという事態に陥りかねません。</p>
+                    
+                    <p>また、間違った引用をしてしまったり、引用先の記載漏れがあっただけで盗用（Plagiarism）とされ、Honor Council（学校内の裁判のようなもの）にかけられるなど、海外の大学は非常にプロフェッショナルでシビアです。最悪のケースでは、退学処分の場合もあります。</p>
+                    
+                    <p>事前に正しい知識とスキルを身につけることで以下が可能となります：</p>
+                    
+                    <ul class="benefits">
+                        <li>✅ 入学後のスムーズな学習開始</li>
+                        <li>✅ 高い学業成績の維持</li>
+                        <li>✅ 充実した留学生活の実現</li>
+                    </ul>
+                    
+                    <p>何より重要なのは、多くの留学生が初期段階で抜える『留学への不安』です。この不安は、留学先での積極的な活動に大きな障壁となります。</p>
+                    
+                    <p>そして、その障壁は学習への積極的な取り組みや、コミュニケーションへの消極的な姿勢に影響を与え、大切な留学期間での成長を著しく阻害してしまいます。</p>
+                    
+                    <p>事前の準備は、留学期間すべての学習効率に大きな影響を与えるため、事前の準備が重要なのです。</p>
                 </div>
             </div>
         </section>
 
-        <section class="student-features">
-            <div class="container">
-                <h3 class="section-title">u5b66u751fu30d7u30edu30b0u30e9u30e0u306eu7279u5fb4</h3>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="text-block">
-                            <span class="highlight">u6d77u5916u5927u5b66u751fu3068u306eu4ea4u6d41</span>
-                            u3092u901au3058u305fu751fu304du305fu82f1u8a9eu7df4u7fd2
-                        </div>
+        <section style="padding: 90px 0; background-color: var(--color-bg);">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                    <span>シミュレーション英会話プログラム</span>
+                    <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
+                </h3>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto 50px; line-height: 1.8;">実際の留学・海外生活シーンを想定した英会話シミュレーションを通じて、実践的なスキルを身につけます。</p>
+        
+                <div style="margin-top: 60px; margin-bottom: 40px; position: relative;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>シミュレーション英会話①</span>
+                    </h4>
+                    
+                    <div style="overflow: hidden; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body);">
+                            <tr style="background-color: var(--color-primary); color: white;">
+                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 25%; border-right: 1px solid rgba(255,255,255,0.2);">週</th>
+                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 75%;">シミュレーションテーマ<br>(場面トピック)</th>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>1-2</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">キャンパスライフ（授業、クラブ活動）</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>3-4</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">プレゼンテーション基礎</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>5-6</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">大学面接・留学面接対策</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>7-8</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">ディベート入門</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>9-10</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">留学生活（ホームステイ）</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>11-12</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">自己PRと将来の目標表現</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="feature-card">
-                        <div class="text-block">
-                            <span class="highlight">u7559u5b66u5bfeu7b56u30abu30eau30adu30e5u30e9u30e0</span>
-                            u3067u5165u8a66u3084u9762u63a5u5bfeu7b56u3082u5b8cu5099
+                
+                    <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
+                        <!-- キャンパスライフ -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">キャンパスライフ（授業、クラブ活動）</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">キャンパスでの日常会話スキルを習得します。授業内容の質問や議論、クラブ活動での交流など、大学生活で必要な英語表現を学びます。アカデミックな表現から若者言葉まで幅広く学習します。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>A:</strong> Hey, did you understand the professor's explanation about the regression analysis?<br>（教授の回帰分析の説明、理解できた？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>B:</strong> Not really. I got lost when he started talking about the correlation coefficients. Would you mind going over your notes with me later?<br>（あまり理解できなかった。相関係数の話になったところで混乱してしまったんだ。後でノートを一緒に見てもらえないかな？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>A:</strong> Sure, no problem! Let's meet at the library around 4 PM. I can explain the key concepts.<br>（もちろん、問題ないよ！4時頃に図書館で会おう。重要な概念を説明するよ。）</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="feature-card">
-                        <div class="text-block">
-                            <span class="highlight">u30d7u30ecu30bcu30f3u30c6u30fcu30b7u30e7u30f3u30b9u30adu30eb</span>
-                            u3092u691cu5b9au5bfeu7b56u3068u4e26u884cu3057u3066u8efdu6975
-                        </div>
-                    </div>
-                    <div class="feature-card">
-                        <div class="text-block">
-                            <span class="highlight">u5927u5b66u5352u306eu30b3u30f3u30b5u30ebu30bfu30f3u30c8</span>
-                            u306bu3088u308bu5165u8a66u30fbu5c31u8077u30b5u30ddu30fcu30c8
+        
+                        <!-- プレゼンテーション基礎 -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">プレゼンテーション基礎</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">効果的な英語プレゼンテーションの基本を学びます。導入、本論、結論までの構成方法、視覚資料の説明方法、質疑応答での対応など、アカデミックな場での発表スキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例（プレゼン導入部）：</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Good morning everyone. Today, I'd like to present my research on sustainable energy solutions for urban communities. First, I'll give you an overview of the current challenges, then I'll discuss three innovative approaches, and finally I'll share my conclusions and recommendations. If you have any questions, please feel free to raise your hand at the end of the presentation.<br>（皆さん、おはようございます。今日は都市コミュニティのための持続可能なエネルギーソリューションに関する私の研究を発表したいと思います。まず、現在の課題の概要を説明し、次に3つの革新的なアプローチについて議論し、最後に私の結論と提言を共有します。質問がある場合は、プレゼンテーションの最後に遠慮なく手を挙げてください。）</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="curriculum">
-            <div class="container">
-                <h3 class="section-title">u5b66u751fu5411u3051u30d7u30edu30b0u30e9u30e0u5185u5bb9</h3>
-                <div class="curriculum-table">
-                    <div class="table-row header">
-                        <div class="level-cell">u30ecu30d9u30eb</div>
-                        <div class="content-cell">u5b66u7fd2u5185u5bb9</div>
+                <div style="margin-top: 60px; margin-bottom: 40px; position: relative;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>シミュレーション英会話②</span>
+                    </h4>
+                    
+                    <div style="overflow: hidden; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body);">
+                            <tr style="background-color: var(--color-primary); color: white;">
+                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 25%; border-right: 1px solid rgba(255,255,255,0.2);">週</th>
+                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 75%;">シミュレーションテーマ<br>(場面トピック)</th>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>13-14</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">テーマディスカッション</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>15-16</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">グループプロジェクト</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>17-18</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">進学・留学相談</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>19-20</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">リサーチプレゼンテーション</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>21-22</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">ディベート応用</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>23-24</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">国際交流プロジェクト</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="table-row">
-                        <div class="level-cell">u5165u9580</div>
-                        <div class="content-cell">u57fau672cu7684u306au82f1u4f1au8a71u8868u73feu3001u30eau30b9u30cbu30f3u30b0u30fbu30b9u30d4u30fcu30adu30f3u30b0u306eu57fau790eu30c8u30ecu30fcu30cbu30f3u30b0</div>
-                    </div>
-                    <div class="table-row">
-                        <div class="level-cell">u521du7d1a</div>
-                        <div class="content-cell">u65e5u5e38u4f1au8a71u3001u7c21u5358u306au30c7u30a3u30b9u30abu30c3u30b7u30e7u30f3u3001u30d7u30ecu30bcu30f3u30c6u30fcu30b7u30e7u30f3u306eu57fau672c</div>
-                    </div>
-                    <div class="table-row">
-                        <div class="level-cell">u4e2du7d1a</div>
-                        <div class="content-cell">u30c7u30a3u30d9u30fcu30c8u3001u30a2u30abu30c7u30dfu30c3u30afu30e9u30a4u30c6u30a3u30f3u30b0u3001u6d77u5916u5927u5b66u5165u8a66u5bfeu7b56</div>
-                    </div>
-                    <div class="table-row">
-                        <div class="level-cell">u4e0au7d1a</div>
-                        <div class="content-cell">u6d77u5916u5927u5b66u306eu6388u696du5f62u5f0fu3092u60f3u5b9au3057u305fu8a8du77e5u5b66u7fd2u3001u7814u7a76u767au8868u3001u56fdu969bu4ea4u6d41u30d7u30edu30b8u30a7u30afu30c8</div>
+                
+                    <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
+                        <!-- テーマディスカッション -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">テーマディスカッション</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">グローバルな社会問題や時事問題について英語でディスカッションするスキルを磨きます。自分の意見を論理的に述べる方法、他者の意見に対して建設的に反応する技術、議論をファシリテートする表現などを学びます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Facilitator:</strong> Today we're discussing the impact of social media on youth. Alice, would you like to start with your perspective?<br>（今日は、ソーシャルメディアが若者に与える影響について議論します。アリス、あなたの視点から始めてもらえますか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Alice:</strong> Thank you. In my opinion, while social media has created unprecedented connectivity, it has also contributed to increased anxiety and depression among teenagers. Studies show that excessive screen time can lead to sleep deprivation and reduced face-to-face social skills.<br>（ありがとうございます。私の意見では、ソーシャルメディアは前例のないつながりを生み出した一方で、10代の若者の間で不安やうつの増加にも寄与しています。研究によると、過度のスクリーンタイムは睡眠不足や対面でのソーシャルスキルの低下につながる可能性があります。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> I see your point, Alice. However, I'd like to add that social media has also been a platform for youth activism and education. For example, many young people learn about global issues and organize meaningful campaigns through these platforms. That said, I agree we need better education about healthy digital habits.<br>（あなたの意見はわかります、アリス。しかし、ソーシャルメディアは若者のアクティビズムや教育のためのプラットフォームにもなっているという点を付け加えたいと思います。例えば、多くの若者がこれらのプラットフォームを通じて世界的な問題について学び、意義のあるキャンペーンを組織しています。とはいえ、健全なデジタル習慣についてのより良い教育が必要であることには同意します。）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- グループプロジェクト -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">グループプロジェクト</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">英語でのグループワークに必要なコミュニケーションスキルを学びます。役割分担、意見調整、進捗報告、問題解決など、海外の大学や国際的な環境で必要となるチームワークスキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Group Leader:</strong> Let's assign roles for our sustainable city design project. We need someone to do research, someone to create visuals, and someone to prepare the presentation.<br>（持続可能な都市設計プロジェクトの役割を割り当てましょう。調査する人、ビジュアルを作成する人、プレゼンテーションを準備する人が必要です。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd be happy to take on the research part. I'm particularly interested in looking at successful eco-city models from Scandinavia and East Asia for comparison.<br>（調査の部分を担当できると嬉しいです。特に、スカンジナビアと東アジアの成功したエコシティモデルを比較して調べることに興味があります。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>Team Member:</strong> That sounds great. Could we schedule a check-in meeting next Wednesday to share our progress? I suggest we create a shared document where we can all update our findings regularly.<br>（それは素晴らしいですね。来週水曜日に進捗状況を共有するためのチェックインミーティングをスケジュールできますか？全員が定期的に調査結果を更新できる共有ドキュメントを作成することを提案します。）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                        <!-- 料金表 -->
+        <div style="margin-top: 80px; margin-bottom: 60px; position: relative;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+                <span>料金</span>
+            </h4>
+
+            <div style="overflow-x: auto; margin-top: 20px;">
+                <table style="width: 100%; min-width: 800px; border-collapse: collapse; font-family: var(--font-body); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                    <thead>
+                        <tr style="background-color: var(--color-primary); color: white;">
+                            <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">プラン</th>
+                            <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">1ヶ月</th>
+                            <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">3ヶ月</th>
+                            <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2);">6ヶ月</th>
+                            <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600;">12ヶ月</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 15px; text-align: center; font-weight: 600; border-right: 1px solid #eee; background-color: #f7f7f7;">通常価格<br>（税込）</td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 500; color: #333;">¥35,800</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 500; color: #333;">¥99,000</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 500; color: #333;">¥189,000</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center;">
+                                <span style="font-size: 1.2rem; font-weight: 500; color: #333;">¥348,000</span>
+                            </td>
+                        </tr>
+                        <tr style="background-color: #f9f9f9;">
+                            <td style="padding: 15px; text-align: center; font-weight: 600; border-right: 1px solid #eee; background-color: #f0f0f0;">割引価格<br>（税込）</td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">¥29,800</span><br>
+                                <span style="font-size: 0.8rem; color: #777; text-decoration: line-through;">¥35,800</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">¥85,800</span><br>
+                                <span style="font-size: 0.8rem; color: #777; text-decoration: line-through;">¥99,000</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center; border-right: 1px solid #eee;">
+                                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">¥159,800</span><br>
+                                <span style="font-size: 0.8rem; color: #777; text-decoration: line-through;">¥189,000</span>
+                            </td>
+                            <td style="padding: 15px; text-align: center;">
+                                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">¥299,800</span><br>
+                                <span style="font-size: 0.8rem; color: #777; text-decoration: line-through;">¥348,000</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
+
+            <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px; font-style: italic;">※1ヶ月プランは3ヶ月以上のプランを修了された方のみご契約いただけます</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleAccordion(element) {
+        const content = element.nextElementSibling;
+        const icon = element.querySelector('.accordion-icon');
+        
+        // 絭印の切り替え
+        if (icon.text
 
         <section class="cta-section">
             <div class="container">
