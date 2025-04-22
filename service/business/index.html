@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジネスパーソン向け | Engrowth Official Site</title>
+    <meta name="description" content="Engrowthのビジネスパーソン向け英語学習プログラム。グローバルビジネスに必要な英語スキルを身につけるためのカリキュラムをご紹介します。">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Webフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="/">
+                    <h1>Engrowth Official Site</h1>
+                    <p class="tagline">海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
+                </a>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="/">トップページ</a></li>
+                    <li><a href="/about/">ビジョン</a></li>
+                    <li><a href="/service/business/" class="active">ビジネスパーソン向け</a></li>
+                    <li><a href="/service/students/">学生向け</a></li>
+                    <li><a href="/service/vision/">社会貢献・ミッション</a></li>
+                    <li><a href="/contact/">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2 class="page-title">ビジネスパーソン向け</h2>
+            </div>
+        </section>
+
+        <section class="service-intro">
+            <div class="container">
+                <div class="service-image">
+                    <img src="../../assets/images/business-meeting.jpg" alt="ビジネスミーティングの様子">
+                </div>
+                <div class="service-text">
+                    <h3>基礎英語力の底上げ</h3>
+                    <p>英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、英語を聞くことや話すことになれることが何よりも重要。</p>
+                    <p>スピーキング、リスニングを中心に、<strong>発話することで聞き取れるようになる脳のメカニズム</strong>を利用し、英語への苦手意識や恐怖心が無くなるように基礎英語力の底上げを行います。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-features">
+            <div class="container">
+                <h3 class="section-title">Engrowthのビジネス英語学習の特徴</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="text-block">
+                            専任のコンサルタントによる
+                            <span class="highlight">毎日の学習サポート</span>
+                            <span class="ampersand">&amp;</span>
+                            <span class="highlight">毎週のオンラインセッション</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="text-block">
+                            エングロース受講生
+                            <span class="highlight">専用アプリの提供</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="text-block">
+                            <span class="highlight">脳科学×AI</span>の
+                            学習サービスを提供
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="text-block">
+                            アダプティブラーニングを
+                            採用した<span class="highlight">カスタムカリキュラム</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="text-block">
+                            世界の名門大学出身
+                            コンサルタントが
+                            <span class="highlight">マンツーマン</span>であなたに伴走
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="text-block">
+                            現地で使える<span class="highlight">"生きた英語"</span>の
+                            習得をサポート
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-schedule">
+            <div class="container">
+                <h3 class="section-title">ビジネスコースの学習時間</h3>
+                <div class="schedule-tabs">
+                    <div class="tab active" data-tab="weekday">平日</div>
+                    <div class="tab" data-tab="weekend">週末</div>
+                </div>
+                <div class="schedule-content">
+                    <!-- 平日のスケジュール -->
+                    <div class="day-schedule" id="weekday-schedule">
+                        <p>平日は通勤時間や昼休み、就寝前などの時間を活用して効率的に学習を進めます。</p>
+                        <p>専任コンサルタントがあなたの生活スタイルに合わせた学習計画を立案し、無理なく継続できるようサポートします。</p>
+                    </div>
+                    <!-- 週末のスケジュール -->
+                    <div class="weekend-schedule" id="weekend-schedule" style="display: none;">
+                        <p>週末はより集中的に学習を行い、平日に学んだ内容の復習や応用練習を行います。</p>
+                        <p>オンラインセッションやシミュレーション英会話を通じて、実践的なコミュニケーション能力を養います。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="simulation-program">
+            <div class="container">
+                <h3 class="section-title">シミュレーション英会話プログラム</h3>
+                <p class="section-description">実際のビジネスシーンを想定した英会話シミュレーションを通じて、実践的なスキルを身につけます。</p>
+                
+                <div class="simulation-table">
+                    <div class="table-row header">
+                        <div class="week-cell">週</div>
+                        <div class="theme-cell">シミュレーションテーマ（場面トピック）</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">1-2週目</div>
+                        <div class="theme-cell">挨拶</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">3-4週目</div>
+                        <div class="theme-cell">自己紹介</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">5-6週目</div>
+                        <div class="theme-cell">道の聞き方/聞かれた際の答え方</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">7-8週目</div>
+                        <div class="theme-cell">飛行機（チェックイン、機内）</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">9-10週目</div>
+                        <div class="theme-cell">ホテル（チェックイン/アウト）</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="week-cell">11-12週目</div>
+                        <div class="theme-cell">カフェ＆レストラン（予約、注文）</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h3 class="cta-title">無料相談・資料請求</h3>
+                <p class="cta-description">ビジネス英語に関するお悩みやご質問がございましたら、お気軽にご相談ください。専任コンサルタントが丁寧にお答えします。</p>
+                <div class="cta-buttons">
+                    <a href="/contact/" class="btn btn-primary">無料相談する</a>
+                    <a href="/contact/" class="btn btn-secondary">資料を請求する</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="/">Engrowth</a>
+                    <p>海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>サイトマップ</h4>
+                        <ul>
+                            <li><a href="/">トップページ</a></li>
+                            <li><a href="/about/">ビジョン</a></li>
+                            <li><a href="/service/business/">ビジネスパーソン向け</a></li>
+                            <li><a href="/service/students/">学生向け</a></li>
+                            <li><a href="/service/vision/">社会貢献・ミッション</a></li>
+                            <li><a href="/contact/">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                    <div class="social-links">
+                        <h4>SNS</h4>
+                        <ul>
+                            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Engrowth All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
