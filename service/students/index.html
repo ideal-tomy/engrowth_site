@@ -9,50 +9,37 @@
     <!-- Webフォント -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* 基本スタイル */
         :root {
-            --primary: #b80000;
-            --primary-light: #d42626;
-            --primary-dark: #8b0000;
-            --accent: #d4af37;
-            --accent-light: #e6c458;
-            --accent-dark: #b89020;
-            --grey-700: #333;
-            --grey-500: #666;
-            --grey-200: #ddd;
-            --grey-100: #eee;
-            --grey-50: #fafafa;
-            --white: #ffffff;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 2rem;
-            --space-lg: 4rem;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --font-heading: 'Playfair Display', 'Noto Serif JP', serif;
+            --font-body: 'Noto Serif JP', serif;
+            --font-sub: 'Josefin Sans', sans-serif;
+            --color-primary: #CC0000;
+            --color-secondary: #333333;
+            --color-bg: #f9f9f9;
+            --color-text: #333333;
+            --color-light: #ffffff;
+            --shadow-soft: 0 5px 15px rgba(0,0,0,0.08);
         }
-        
         body {
             font-family: var(--font-body);
-            line-height: 1.6;
-            color: var(--grey-700);
-            background-color: var(--white);
+            color: var(--color-text);
+            line-height: 1.8;
+            background-color: var(--color-light);
             margin: 0;
             padding: 0;
         }
         
         /* ヘッダースタイル */
         .header {
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
+            background-color: var(--color-light);
+            box-shadow: var(--shadow-soft);
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: var(--space-sm) 0;
+            padding: 1rem 0;
         }
         
         .header-content {
@@ -61,7 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 var(--space-sm);
+            padding: 0 1rem;
         }
         
         .logo h1 {
@@ -69,12 +56,12 @@
             font-weight: 700;
             font-size: 1.5rem;
             margin: 0;
-            color: var(--primary);
+            color: var(--color-primary);
         }
         
         .logo .tagline {
             font-size: 0.8rem;
-            color: var(--grey-500);
+            color: var(--color-secondary);
             margin: 0;
         }
         
@@ -92,25 +79,26 @@
         }
         
         .global-nav li {
-            margin: 0 var(--space-sm);
+            margin: 0 1rem;
         }
         
         .global-nav a {
             text-decoration: none;
-            color: var(--grey-700);
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: var(--space-xs) 0;
+            color: var(--color-secondary);
+            font-weight: 700;  /* 500から700に変更して太文字に */
+            font-size: 1rem;   /* 0.9remから1remに変更してサイズを統一 */
+            padding: 0.5rem 0;
             position: relative;
             transition: color 0.3s;
         }
         
         .global-nav a:hover {
-            color: var(--primary);
+            color: var(--color-primary);
         }
         
         .global-nav a.active {
-            color: var(--primary);
+            color: var(--color-primary);
+            font-weight: 700;  /* アクティブな項目も同じ太さに */
         }
         
         .global-nav a.active::after {
@@ -120,15 +108,15 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--color-primary);
         }
         
         /* ページヘッダー */
         .page-header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: var(--space-md) 0;
-            margin-bottom: var(--space-lg);
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 2rem 0;
+            margin-bottom: 4rem;
             text-align: center;
         }
         
@@ -148,22 +136,22 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background-color: var(--accent);
+            background-color: var(--color-secondary);
         }
         
         /* コンテナ */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--space-sm);
+            padding: 0 1rem;
         }
         
         /* セクションスタイル */
         .section-title {
             font-family: var(--font-heading);
             font-size: 2rem;
-            color: var(--grey-700);
-            margin-bottom: var(--space-md);
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
             text-align: center;
             position: relative;
         }
@@ -176,18 +164,18 @@
             transform: translateX(-50%);
             width: 80px;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--color-primary);
         }
         
         /* サービス紹介 */
         .service-intro {
-            margin-bottom: var(--space-lg);
+            margin-bottom: 4rem;
         }
         
         .service-intro .container {
             display: flex;
             align-items: center;
-            gap: var(--space-md);
+            gap: 2rem;
         }
         
         .service-image {
@@ -197,7 +185,7 @@
         .service-image img {
             width: 100%;
             border-radius: 8px;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-soft);
         }
         
         .service-text {
@@ -207,30 +195,30 @@
         .service-text h3 {
             font-family: var(--font-heading);
             font-size: 1.8rem;
-            color: var(--primary);
+            color: var(--color-primary);
             margin-top: 0;
-            margin-bottom: var(--space-sm);
+            margin-bottom: 1rem;
         }
         
         /* 特徴カード */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
         
         .feature-card {
-            background-color: var(--grey-50);
-            padding: var(--space-md);
+            background-color: var(--color-light);
+            padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-soft);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-soft);
         }
         
         .text-block {
@@ -238,20 +226,20 @@
         }
         
         .highlight {
-            color: var(--primary);
+            color: var(--color-primary);
             font-weight: 600;
             display: block;
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
         
         /* カリキュラムテーブル */
         .curriculum-table {
             width: 100%;
-            margin-bottom: var(--space-lg);
+            margin-bottom: 4rem;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-soft);
         }
         
         .table-row {
@@ -259,17 +247,17 @@
         }
         
         .table-row.header {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: var(--color-primary);
+            color: var(--color-light);
             font-weight: 600;
         }
         
         .table-row:nth-child(odd):not(.header) {
-            background-color: var(--grey-50);
+            background-color: var(--color-light);
         }
         
         .table-row:nth-child(even):not(.header) {
-            background-color: var(--white);
+            background-color: var(--color-light);
         }
         
         .level-cell, .content-cell {
@@ -287,55 +275,55 @@
         
         /* 留学成功への３ステップセクション */
         .study-steps {
-            margin-bottom: var(--space-lg);
-            background-color: var(--grey-50);
-            padding: var(--space-md) 0;
+            margin-bottom: 4rem;
+            background-color: var(--color-light);
+            padding: 2rem 0;
         }
         
         .steps-container {
-            margin-bottom: var(--space-md);
+            margin-bottom: 2rem;
         }
         
         .step-card {
-            background-color: var(--white);
+            background-color: var(--color-light);
             border-radius: 8px;
-            box-shadow: var(--shadow-md);
-            padding: var(--space-md);
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
             text-align: center;
         }
         
         .step-highlight {
             font-weight: 600;
-            color: var(--primary);
+            color: var(--color-primary);
             font-size: 1.2rem;
             margin: 10px 0;
         }
         
         .study-description {
-            background-color: var(--white);
+            background-color: var(--color-light);
             border-radius: 8px;
-            box-shadow: var(--shadow-md);
-            padding: var(--space-md);
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
         }
         
         .study-description h4 {
-            color: var(--primary);
+            color: var(--color-primary);
             font-family: var(--font-heading);
             font-size: 1.5rem;
-            margin-top: var(--space-md);
-            margin-bottom: var(--space-sm);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .study-description h5 {
             font-weight: 600;
             font-size: 1.1rem;
-            margin-top: var(--space-sm);
-            margin-bottom: var(--space-xs);
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
         }
         
         .essay-features, .support-features, .benefits {
             padding-left: 20px;
-            margin: var(--space-sm) 0;
+            margin: 1rem 0;
         }
         
         .essay-features li, .support-features li {
@@ -345,7 +333,7 @@
         
         .essay-features li:before, .support-features li:before {
             content: '\2022';  /* ブレットポイント */
-            color: var(--primary);
+            color: var(--color-primary);
             font-weight: bold;
             display: inline-block;
             width: 1em;
@@ -369,12 +357,12 @@
             </div>
             <nav class="global-nav">
                 <ul>
-                    <li><a href="../../index.html">トップページ</a></li>
-                    <li><a href="../../about/index.html">ビジョン</a></li>
-                    <li><a href="../business/index.html">ビジネスパーソン向け</a></li>
-                    <li><a href="../students/index.html" class="active">学生向け</a></li>
-                    <li><a href="../vision/index.html">社会貢献・ミッション</a></li>
-                    <li><a href="../../contact/index.html">お問い合わせ</a></li>
+                    <li><a href="/index.html">トップページ</a></li>
+                    <li><a href="/about/index.html">ビジョン</a></li>
+                    <li><a href="/service/business/index.html">ビジネスパーソン向け</a></li>
+                    <li><a href="/service/students/index.html" class="active">学生向け</a></li>
+                    <li><a href="/service/vision/index.html">社会貢献・ミッション</a></li>
+                    <li><a href="/contact/index.html">お問い合わせ</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" aria-label="メニュー">
@@ -386,9 +374,11 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <div class="container">
-                <h2 class="page-title">学生向け</h2>
+        <section style="padding: 120px 0 60px; background-color: var(--color-primary); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(204, 0, 0, 0.9), rgba(204, 0, 0, 0.7)); z-index: 1;"></div>
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; text-align: center;">
+                <h2 style="font-family: var(--font-heading); color: #ffffff; font-size: 3.5rem; margin-bottom: 20px; font-weight: 500; letter-spacing: 0.05em; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">学生向け</h2>
+                <p style="color: #ffffff; font-family: var(--font-sub); font-size: 1.2rem; max-width: 800px; margin: 0 auto; letter-spacing: 0.03em;">次世代リーダーとしての英語力と国際感覚を養うプログラム</p>
             </div>
         </section>
 
@@ -404,8 +394,6 @@
                 </div>
             </div>
         </section>
-
-
 
         <section class="study-steps" style="background-color: #fbfbfb; padding: 80px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
             <div class="container">
@@ -427,34 +415,35 @@
                     </div>
                 </div>
                 
-                <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 50px;">
                     <!-- ステップ1 -->
-                    <div style="background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';">
-                        <div style="background-color: var(--color-primary); padding: 20px; text-align: center;">
-                            <h4 style="margin: 0; color: white; font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">①基礎英語力の底上げ</h4>
-                        </div>
-                        <div style="padding: 30px;">
-                            <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 20px;">
-                                英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、<strong style="color: var(--color-secondary);">英語を聞くことや話すことになれることが何よりも重要</strong>です。
+                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft)';">
+                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-secondary); margin-top: 0; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; position: relative;">
+                            <span style="color: var(--color-primary); font-weight: 600; margin-right: 5px;">①</span>基礎英語力の底上げ
+                        </h4>
+                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
+                            <p style="margin-bottom: 15px;">
+                                英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、<span style="color: var(--color-primary); font-weight: 600;">英語を聞くことや話すことになれることが何よりも重要</span>です。
                             </p>
-                            <p style="font-size: 1rem; color: #555; line-height: 1.8;">
+                            <p>
                                 スピーキング、リスニングを中心に、発話することで聞き取れるようになる脳のメカニズムを利用し、英語への苦手意識や恐怖心が無くなるように基礎英語力の底上げを行います。
                             </p>
                         </div>
                     </div>
                     
                     <!-- ステップ2 -->
-                    <div style="background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';">
-                        <div style="background-color: var(--color-primary); padding: 20px; text-align: center;">
-                            <h4 style="margin: 0; color: white; font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">②エッセイ添削の重要性</h4>
-                        </div>
-                        <div style="padding: 30px;">
-                            <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 20px;">
-                                アメリカの大学で成功するためには、<strong style="color: var(--color-secondary);">学術的なライティングスキル</strong>が必要不可欠です。多くの日本人留学生が直面する最大の課題の一つが、英語でのアカデミックライティングの習得です。
+                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft)';">
+                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-secondary); margin-top: 0; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; position: relative;">
+                            <span style="color: var(--color-primary); font-weight: 600; margin-right: 5px;">②</span>エッセイ添削の重要性
+                        </h4>
+                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
+                            <p style="margin-bottom: 15px;">
+                                アメリカの大学で成功するためには、<span style="color: var(--color-primary); font-weight: 600;">学術的なライティングスキル</span>が必要不可欠です。多くの日本人留学生が直面する最大の課題の一つが、英語でのアカデミックライティングの習得です。
                             </p>
-                            <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid var(--color-primary); margin-bottom: 20px;">
-                                <h5 style="color: var(--color-secondary); margin-top: 0; margin-bottom: 10px; font-size: 1.1rem;">なぜ英語でのエッセイは難しいのか</h5>
-                                <p style="font-size: 0.95rem; color: #555; line-height: 1.7; margin: 0;">
+                            <div style="background-color: #f9f9f9; padding: 15px; border-left: 3px solid var(--color-primary); margin: 15px 0; font-size: 0.95rem;">
+                                <p style="margin: 0;">
                                     英語で記述する論文では、「内容」だけでなく「構造」が重視されます。優れた考察や分析を行っても、学術界で求められる独特の形式に従わなければ、高評価を得ることは困難です。
                                 </p>
                             </div>
@@ -462,15 +451,16 @@
                     </div>
                     
                     <!-- ステップ3 -->
-                    <div style="background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';">
-                        <div style="background-color: var(--color-primary); padding: 20px; text-align: center;">
-                            <h4 style="margin: 0; color: white; font-size: 1.5rem; font-weight: 500; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">③シミュレーション英会話</h4>
-                        </div>
-                        <div style="padding: 30px;">
-                            <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 20px;">
-                                学校で習うような文法的な学習だけでは「留学の予習」にはなりません。<strong style="color: var(--color-secondary);">実際に留学や外国人とのコミュニケーションの際に困らないよう</strong>、実践的な対話力を身につけていきます。
+                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft)';">
+                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-secondary); margin-top: 0; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; position: relative;">
+                            <span style="color: var(--color-primary); font-weight: 600; margin-right: 5px;">③</span>シミュレーション英会話
+                        </h4>
+                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
+                            <p style="margin-bottom: 15px;">
+                                学校で習うような文法的な学習だけでは「留学の予習」にはなりません。<span style="color: var(--color-primary); font-weight: 600;">実際に留学や外国人とのコミュニケーションの際に困らないよう</span>、実践的な対話力を身につけていきます。
                             </p>
-                            <p style="font-size: 1rem; color: #555; line-height: 1.8;">
+                            <p>
                                 留学の準備は、学習熟度すべてが学習体験の充実度に直結するため、最初の準備が最も大切です。様々な場面を想定したシミュレーションを通じて、実践的な英会話スキルを身につけます。
                             </p>
                         </div>
@@ -551,7 +541,7 @@
                     <span>シミュレーション英会話プログラム</span>
                     <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
                 </h3>
-                <p style="text-align: center; font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto 50px; line-height: 1.8;">実際の留学・海外生活シーンを想定した英会話シミュレーションを通じて、実践的なスキルを身につけます。</p>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto 50px; line-height: 1.8;">実際の留学シーンを想定した英会話シミュレーションを通じて、実践的なスキルを身につけます。</p>
         
                 <div style="margin-top: 60px; margin-bottom: 40px; position: relative;">
                     <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
@@ -566,65 +556,146 @@
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>1-2</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">キャンパスライフ（授業、クラブ活動）</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">挨拶</td>
                             </tr>
                             <tr>
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>3-4</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">プレゼンテーション基礎</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">自己紹介</td>
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>5-6</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">大学面接・留学面接対策</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">道の聞き方/聞かれた際の答え方</td>
                             </tr>
                             <tr>
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>7-8</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ディベート入門</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">飛行機（チェックイン、機内）</td>
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>9-10</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">留学生活（ホームステイ）</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">ホテル（チェックイン/アウト）</td>
                             </tr>
                             <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>11-12</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">自己PRと将来の目標表現</td>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>11-12</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">カフェ＆レストラン（予約、注文）</td>
                             </tr>
                         </table>
                     </div>
                 
                     <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
-                        <!-- キャンパスライフ -->
+                        <!-- 挨拶 -->
                         <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
                             <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">キャンパスライフ（授業、クラブ活動）</h3>
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">挨拶</h3>
                                 <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
                             </div>
                             <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
                                 <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">キャンパスでの日常会話スキルを習得します。授業内容の質問や議論、クラブ活動での交流など、大学生活で必要な英語表現を学びます。アカデミックな表現から若者言葉まで幅広く学習します。</p>
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">基本的な挨拶から始め、時間帯や場面に応じた適切な挨拶の仕方を学びます。フォーマル/カジュアルな表現の使い分けや、文化的な違いにも注目します。</p>
                                     
                                     <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
                                         <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>A:</strong> Hey, did you understand the professor's explanation about the regression analysis?<br>（教授の回帰分析の説明、理解できた？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>B:</strong> Not really. I got lost when he started talking about the correlation coefficients. Would you mind going over your notes with me later?<br>（あまり理解できなかった。相関係数の話になったところで混乱してしまったんだ。後でノートを一緒に見てもらえないかな？）</p>
-                                        <p style="margin: 0; color: #555;"><strong>A:</strong> Sure, no problem! Let's meet at the library around 4 PM. I can explain the key concepts.<br>（もちろん、問題ないよ！4時頃に図書館で会おう。重要な概念を説明するよ。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Good morning! How are you doing today?<br>（おはようございます！今日の調子はどうですか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Friend:</strong> Hi there! I'm doing great, thanks. How about you?<br>（やあ！とても元気だよ、ありがとう。あなたはどう？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> I'm doing well, thank you. It's a beautiful day, isn't it?<br>（元気です、ありがとう。素晴らしい日ですね？）</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
-                        <!-- プレゼンテーション基礎 -->
+
+                        <!-- 自己紹介 -->
                         <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
                             <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">プレゼンテーション基礎</h3>
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">自己紹介</h3>
                                 <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
                             </div>
                             <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
                                 <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">効果的な英語プレゼンテーションの基本を学びます。導入、本論、結論までの構成方法、視覚資料の説明方法、質疑応答での対応など、アカデミックな場での発表スキルを身につけます。</p>
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">自己紹介の基本的な構成から、状況に応じた適切な表現方法を学びます。学校での自己紹介、友人との出会い、フォーマルな場面での自己紹介など、様々なシチュエーションに対応できるようになります。</p>
                                     
                                     <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例（プレゼン導入部）：</p>
-                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Good morning everyone. Today, I'd like to present my research on sustainable energy solutions for urban communities. First, I'll give you an overview of the current challenges, then I'll discuss three innovative approaches, and finally I'll share my conclusions and recommendations. If you have any questions, please feel free to raise your hand at the end of the presentation.<br>（皆さん、おはようございます。今日は都市コミュニティのための持続可能なエネルギーソリューションに関する私の研究を発表したいと思います。まず、現在の課題の概要を説明し、次に3つの革新的なアプローチについて議論し、最後に私の結論と提言を共有します。質問がある場合は、プレゼンテーションの最後に遠慮なく手を挙げてください。）</p>
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Hello everyone, I'm [Name] from Japan. I'm an exchange student majoring in Business Administration. I'm really interested in international marketing and hope to learn a lot during my stay here.<br>（皆さん、こんにちは。日本から来た[名前]です。経営学を専攻する留学生です。国際マーケティングに非常に興味があり、ここでの滞在中に多くのことを学びたいと思っています。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>Classmate:</strong> Welcome! What made you choose this university?<br>（ようこそ！なぜこの大学を選んだの？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 道の聞き方/聞かれた際の答え方 -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">道の聞き方/聞かれた際の答え方</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">道案内に必要な表現を学びます。方向や距離の説明、ランドマークの使用、確認の仕方など、実践的なナビゲーションスキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Tourist:</strong> Excuse me, could you tell me how to get to the Central Library?<br>（すみません、中央図書館への行き方を教えていただけますか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Sure! Go straight for two blocks, then turn right at the traffic light. The library is the large brick building on your left.<br>（はい！2ブロックまっすぐ進んで、信号を右に曲がってください。図書館は左手にある大きなレンガ造りの建物です。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>Tourist:</strong> Thank you! So that's two blocks and then right at the light?<br>（ありがとうございます！2ブロック進んで信号を右でいいですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 飛行機（チェックイン、機内） -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">飛行機（チェックイン、機内）</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">空港でのチェックインから機内での会話まで、フライトに関連する様々な場面での英語表現を学びます。搭乗手続き、機内サービス、入国手続きなどに必要な表現を習得します。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Good morning, may I see your passport and ticket please?<br>（おはようございます。パスポートと航空券を拝見できますか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Here you are. I'd like a window seat if possible.<br>（はい、どうぞ。可能であれば窓側の席をお願いします。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>Flight Attendant:</strong> Would you like something to drink?<br>（お飲み物はいかがですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ホテル（チェックイン/アウト） -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ホテル（チェックイン/アウト）</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">ホテルでの一般的なやり取りに必要な英語表現を学びます。予約の確認、チェックイン/アウトの手続き、ホテル内のサービスの利用方法などを習得します。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Hi, I have a reservation under the name [Your Name].<br>（こんにちは、[お名前]で予約をしています。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Yes, I see your reservation. A double room for 3 nights. Could I see your ID please?<br>（はい、予約を確認いたしました。ダブルルームで3泊ですね。身分証明書を拝見できますか？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> What time is checkout?<br>（チェックアウトは何時ですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- カフェ＆レストラン（予約、注文） -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">カフェ＆レストラン（予約、注文）</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">飲食店での注文や予約に必要な英語表現を学びます。メニューの読み方、好みの伝え方、特別なリクエストの仕方など、実践的な会話スキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd like to make a reservation for tonight at 7:00 PM for two people.<br>（今晩7時に2名で予約をしたいのですが。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Could I have your name, please? And would you prefer a smoking or non-smoking section?<br>（お名前を伺えますか？また、喫煙席と禁煙席どちらをご希望ですか？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> I'm allergic to nuts. Could you make sure my dish doesn't contain any nuts?<br>（ナッツアレルギーがあるのですが、料理にナッツが入っていないことを確認していただけますか？）</p>
                                     </div>
                                 </div>
                             </div>
@@ -645,67 +716,150 @@
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>13-14</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">テーマディスカッション</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">ショッピング（試着、会計）</td>
                             </tr>
                             <tr>
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>15-16</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">グループプロジェクト</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">交通機関（電車、バス）</td>
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>17-18</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">進学・留学相談</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">銀行口座開設</td>
                             </tr>
                             <tr>
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>19-20</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">リサーチプレゼンテーション</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">郵便局、宅急便</td>
                             </tr>
                             <tr style="background-color: #f5f5f5;">
                                 <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>21-22</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ディベート応用</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">病院（予約、受付、診察）</td>
                             </tr>
                             <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>23-24</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">国際交流プロジェクト</td>
+                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>23-24</td>
+                                <td style="padding: 20px; text-align: center; color: #555;">カスタム ※専任コンサルタントと個別に相談</td>
                             </tr>
                         </table>
                     </div>
                 
                     <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
-                        <!-- テーマディスカッション -->
+                        <!-- ショッピング（試着、会計） -->
                         <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
                             <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">テーマディスカッション</h3>
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ショッピング（試着、会計）</h3>
                                 <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
                             </div>
                             <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
                                 <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">グローバルな社会問題や時事問題について英語でディスカッションするスキルを磨きます。自分の意見を論理的に述べる方法、他者の意見に対して建設的に反応する技術、議論をファシリテートする表現などを学びます。</p>
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">ショッピング時に必要な英語表現を学びます。サイズや色の確認、試着の依頼、支払い方法の指定など、買い物に関する実践的なコミュニケーションスキルを身につけます。</p>
                                     
                                     <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
                                         <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Facilitator:</strong> Today we're discussing the impact of social media on youth. Alice, would you like to start with your perspective?<br>（今日は、ソーシャルメディアが若者に与える影響について議論します。アリス、あなたの視点から始めてもらえますか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Alice:</strong> Thank you. In my opinion, while social media has created unprecedented connectivity, it has also contributed to increased anxiety and depression among teenagers. Studies show that excessive screen time can lead to sleep deprivation and reduced face-to-face social skills.<br>（ありがとうございます。私の意見では、ソーシャルメディアは前例のないつながりを生み出した一方で、10代の若者の間で不安やうつの増加にも寄与しています。研究によると、過度のスクリーンタイムは睡眠不足や対面でのソーシャルスキルの低下につながる可能性があります。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>You:</strong> I see your point, Alice. However, I'd like to add that social media has also been a platform for youth activism and education. For example, many young people learn about global issues and organize meaningful campaigns through these platforms. That said, I agree we need better education about healthy digital habits.<br>（あなたの意見はわかります、アリス。しかし、ソーシャルメディアは若者のアクティビズムや教育のためのプラットフォームにもなっているという点を付け加えたいと思います。例えば、多くの若者がこれらのプラットフォームを通じて世界的な問題について学び、意義のあるキャンペーンを組織しています。とはいえ、健全なデジタル習慣についてのより良い教育が必要であることには同意します。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Do you have this shirt in a medium size? I'd like to try it on.<br>（このシャツのMサイズはありますか？試着してみたいのですが。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Yes, here's a medium. The fitting rooms are over there.<br>（はい、こちらがMサイズです。試着室はあちらになります。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> I'll take this one. Can I pay by credit card?<br>（これをいただきます。クレジットカードは使えますか？）</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
-                        <!-- グループプロジェクト -->
+
+                        <!-- 交通機関（電車、バス） -->
                         <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
                             <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">グループプロジェクト</h3>
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">交通機関（電車、バス）</h3>
                                 <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
                             </div>
                             <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
                                 <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">英語でのグループワークに必要なコミュニケーションスキルを学びます。役割分担、意見調整、進捗報告、問題解決など、海外の大学や国際的な環境で必要となるチームワークスキルを身につけます。</p>
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">公共交通機関の利用に必要な英語表現を学びます。切符の購入、乗り換え案内の確認、遅延情報の確認など、移動に関する実践的なコミュニケーションスキルを身につけます。</p>
                                     
                                     <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
                                         <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Group Leader:</strong> Let's assign roles for our sustainable city design project. We need someone to do research, someone to create visuals, and someone to prepare the presentation.<br>（持続可能な都市設計プロジェクトの役割を割り当てましょう。調査する人、ビジュアルを作成する人、プレゼンテーションを準備する人が必要です。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd be happy to take on the research part. I'm particularly interested in looking at successful eco-city models from Scandinavia and East Asia for comparison.<br>（調査の部分を担当できると嬉しいです。特に、スカンジナビアと東アジアの成功したエコシティモデルを比較して調べることに興味があります。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>Team Member:</strong> That sounds great. Could we schedule a check-in meeting next Wednesday to share our progress? I suggest we create a shared document where we can all update our findings regularly.<br>（それは素晴らしいですね。来週水曜日に進捗状況を共有するためのチェックインミーティングをスケジュールできますか？全員が定期的に調査結果を更新できる共有ドキュメントを作成することを提案します。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Excuse me, which platform is for the train to downtown?<br>（すみません、ダウンタウン行きの電車は何番ホームですか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Platform 3. The next train leaves in 10 minutes.<br>（3番ホームです。次の電車は10分後に出発します。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Do I need to transfer to get to the university?<br>（大学まで行くには乗り換えが必要ですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 銀行口座開設 -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">銀行口座開設</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">銀行での手続きに必要な英語表現を学びます。口座開設の手続き、必要書類の確認、口座の種類の選択など、金融に関する実践的なコミュニケーションスキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd like to open a student account. What documents do I need?<br>（学生用の口座を開設したいのですが、必要な書類を教えていただけますか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Bank Staff:</strong> You'll need your passport, student ID, and proof of address.<br>（パスポート、学生証、住所証明が必要です。）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Does this account come with a debit card?<br>（この口座にはデビットカードは付きますか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 郵便局、宅急便 -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">郵便局、宅急便</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">郵便や宅配サービスの利用に必要な英語表現を学びます。荷物の発送、追跡番号の確認、配達オプションの選択など、郵送に関する実践的なコミュニケーションスキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I need to send this package to Japan. What's the fastest shipping option?<br>（この荷物を日本に送りたいのですが、最も早い配送方法は何ですか？）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Express shipping takes 3-5 business days. Would you like tracking?<br>（エクスプレス便で3-5営業日かかります。追跡サービスはご利用になりますか？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Yes, please. Do I need to fill out any customs forms?<br>（はい、お願いします。税関申告書は必要ですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 病院（予約、受付、診察） -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">病院（予約、受付、診察）</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">医療機関での受診に必要な英語表現を学びます。症状の説明、予約の取り方、保険の確認など、医療に関する実践的なコミュニケーションスキルを身につけます。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd like to make an appointment. I have a fever and sore throat.<br>（予約をしたいのですが。熱があって喉が痛いです。）</p>
+                                        <p style="margin: 0 0 5px; color: #555;"><strong>Receptionist:</strong> Do you have health insurance? When did the symptoms start?<br>（健康保険はお持ちですか？症状はいつから始まりましたか？）</p>
+                                        <p style="margin: 0; color: #555;"><strong>Doctor:</strong> How long have you been feeling this way?<br>（このような症状はいつからですか？）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- カスタム -->
+                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
+                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
+                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">カスタム</h3>
+                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
+                            </div>
+                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
+                                <div style="padding: 20px 0;">
+                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">あなたの特定のニーズや目標に合わせて、カスタマイズされた英会話トレーニングを提供します。専任コンサルタントと相談しながら、最適な学習プランを作成します。</p>
+                                    
+                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">カスタマイズ可能な例：</p>
+                                        <ul style="margin: 0; padding-left: 20px; color: #555;">
+                                            <li style="margin-bottom: 8px;">特定の学術分野に関連する専門用語や表現</li>
+                                            <li style="margin-bottom: 8px;">研究発表やプレゼンテーションのスキル</li>
+                                            <li style="margin-bottom: 8px;">留学先の文化や習慣に特化した会話練習</li>
+                                            <li>個人の興味や専門分野に関連した会話シナリオ</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -713,7 +867,7 @@
                     </div>
                 </div>
 
-                        <!-- 料金表 -->
+                <!-- 料金表セクション -->
         <div style="margin-top: 80px; margin-bottom: 60px; position: relative;">
             <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
                 <span>料金</span>
@@ -780,54 +934,63 @@
         const icon = element.querySelector('.accordion-icon');
         
         // 絭印の切り替え
-        if (icon.text
+        if (icon.textContent === '+') {
+            icon.textContent = '-';
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            icon.textContent = '+';
+            content.style.maxHeight = '0px';
+        }
+    }
+</script>
 
-        <section class="cta-section">
-            <div class="container">
-                <h3 class="cta-title">u307eu305au306fu304au554fu3044u5408u308fu305bu304fu3060u3055u3044</h3>
-                <p class="cta-description">u5b66u751fu3084u4fddu8b77u8005u306eu65b9u304bu3089u306eu304au554fu3044u5408u308fu305bu3092u304au5f85u3061u3057u3066u3044u307eu3059u3002u30d7u30edu30b0u30e9u30e0u306eu8a73u7d30u3084u6599u91d1u4f53u7cfbu3001u7559u5b66u30b5u30ddu30fcu30c8u306bu3064u3044u3066u3054u8aacu660eu3044u305fu3057u307eu3059u3002</p>
-                <div class="cta-buttons">
-                    <a href="/contact/" class="btn btn-primary">u304au554fu3044u5408u308fu305bu3059u308b</a>
-                </div>
-            </div>
-        </section>
-    </main>
+<section class="cta-section">
+    <div class="container">
+        <h3 class="cta-title">u307eu305au306fu304au554fu3044u5408u308fu305bu304fu3060u3055u3044</h3>
+        <p class="cta-description">u5b66u751fu3084u4fddu8b77u8005u306eu65b9u304bu3089u306eu304au554fu3044u5408u308fu305bu3092u304au5f85u3061u3057u3066u3044u307eu3059u3002u30d7u30edu30b0u30e9u30e0u306eu8a73u7d30u3084u6599u91d1u4f53u7cfbu3001u7559u5b66u30b5u30ddu30fcu30c8u306bu3064u3044u3066u3054u8aacu660eu3044u305fu3057u307eu3059u3002</p>
+        <div class="cta-buttons">
+            <a href="/contact/" class="btn btn-primary">u304au554fu3044u5408u308fu305b</a>
+        </div>
+    </div>
+</section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="/">Engrowth</a>
-                    <p>u6d77u5916u5927u5b66u5728u7c4d/u51fau8eabu306eu5c02u5c5eu30b3u30f3u30b5u30ebu30bfu30f3u30c8u304bu3089u73feu5730u3067u4f7fu3048u308bu751fu304du305fu82f1u8a9eu3092u5b66u3076</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <h4>u30b5u30a4u30c8u30deu30c3u30d7</h4>
-                        <ul>
-                            <li><a href="/">u30c8u30c3u30d7u30dau30fcu30b8</a></li>
-                            <li><a href="/about/">u30d3u30b8u30e7u30f3</a></li>
-                            <li><a href="/service/business/">u30d3u30b8u30cdu30b9u30d1u30fcu30bdu30f3u5411u3051</a></li>
-                            <li><a href="/service/students/">u5b66u751fu5411u3051</a></li>
-                            <li><a href="/service/vision/">u793eu4f1au8ca2u732eu30fbu30dfu30c3u30b7u30e7u30f3</a></li>
-                            <li><a href="/contact/">u304au554fu3044u5408u308fu305b</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-links">
-                        <h4>SNS</h4>
-                        <ul>
-                            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-                            <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
-                            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="/">Engrowth</a>
+                <p>u6d77u5916u5927u5b66u5728u7c4d/u51fau8eabu306eu5c02u5c5eu30b3u30f3u30b5u30ebu30bfu30f3u30c8u304bu3089u73feu5730u3067u4f7fu3048u308bu751fu304du305fu82f1u8a9eu3092u5b66u3076</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Engrowth All Rights Reserved.</p>
+            <div class="footer-links">
+                <div class="footer-nav">
+                    <h4>u30b5u30a4u30c8u30deu30c3u30d7</h4>
+                    <ul>
+                        <li><a href="/">u30c8u30c3u30d7u30dau30fcu30b8</a></li>
+                        <li><a href="/about/">u30d3u30b8u30e7u30f3</a></li>
+                        <li><a href="/service/business/">u30d3u30b8u30cdu30b9u30d1u30fcu30bdu30f3u5411u3051</a></li>
+                        <li><a href="/service/students/">u5b66u751fu5411u3051</a></li>
+                        <li><a href="/service/vision/">u793eu4f1au8ca2u732eu30fbu30dfu30c3u30b7u30e7u30f3</a></li>
+                        <li><a href="/contact/">u304au554fu3044u5408u308fu305b</a></li>
+                    </ul>
+                </div>
+                <div class="social-links">
+                    <h4>SNS</h4>
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+                        <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="copyright">
+            <p>&copy; 2025 Engrowth All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
     
-    <script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>
