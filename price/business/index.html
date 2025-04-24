@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ビジネスパーソン向け | Engrowth Official Site</title>
-    <meta name="description" content="Engrowthのビジネスパーソン向け英語学習プログラム。グローバルビジネスに必要な英語スキルを身につけるためのカリキュラムをご紹介します。">
+    <title>ビジネス向け料金プラン - Engrowth Official Site</title>
+    <meta name="description" content="Engrowthのビジネス向け料金プラン - 現地で使える生きた英語を学ぶ">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
     <!-- Webフォント -->
@@ -23,7 +23,7 @@
             --color-light: #ffffff;
             --shadow-soft: 0 5px 15px rgba(0,0,0,0.08);
         }
-
+        
         /* ヘッダースタイル */
         .header {
             background-color: var(--color-light);
@@ -40,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
         
         .logo h1 {
@@ -63,28 +63,47 @@
         }
         
         /* ナビゲーションスタイル */
+        .global-nav {
+            position: relative;
+        }
+        
         .global-nav ul {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
         
         .global-nav li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
+            position: relative;
         }
         
-        .global-nav a {
+        .global-nav a, .global-nav span {
             text-decoration: none;
             color: var(--color-secondary);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             padding: 0.5rem 0;
             position: relative;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .global-nav span::after {
+            content: '▼';
+            font-size: 0.8em;
+            margin-left: 0.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav .has-submenu.active span::after {
+            transform: rotate(180deg);
         }
         
-        .global-nav a:hover {
+        .global-nav a:hover, .global-nav span:hover {
             color: var(--color-primary);
         }
         
@@ -100,6 +119,88 @@
             width: 100%;
             height: 2px;
             background-color: var(--color-primary);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* サブメニュースタイル */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            min-width: 200px;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .has-submenu.active .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .submenu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .submenu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .submenu a:hover {
+            background: rgba(204, 0, 0, 0.05);
+            color: var(--color-primary);
+        }
+
+        .submenu a::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .global-nav {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -107,916 +208,183 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <a href="/">
+                <a href="../../">
                     <h1>Engrowth Official Site</h1>
                     <p class="tagline">海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
                 </a>
             </div>
             <nav class="global-nav">
                 <ul>
-                    <li><a href="/">トップページ</a></li>
-                    <li><a href="/vision/">ビジョン</a></li>
+                    <li><a href="../../">トップページ</a></li>
+                    <li><a href="../../vision/">ビジョン</a></li>
                     <li class="has-submenu">
                         <span>料金体系</span>
                         <ul class="submenu">
-                            <li><a href="/price/business/" class="active">ビジネス</a></li>
-                            <li><a href="/price/students/">学生</a></li>
+                            <li><a href="../../price/business/" class="active">ビジネス</a></li>
+                            <li><a href="../../price/students/">学生</a></li>
                         </ul>
                     </li>
-                    <li><a href="/faq/">よくある質問</a></li>
-                    <li><a href="/contact/">お問い合わせ</a></li>
+                    <li><a href="../../faq/">よくある質問</a></li>
+                    <li><a href="../../contact/">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="メニュー">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
     <main>
-        <section style="padding: 120px 0 60px; background-color: var(--color-primary); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(204, 0, 0, 0.9), rgba(204, 0, 0, 0.7)); z-index: 1;"></div>
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; text-align: center;">
-                <h2 style="font-family: var(--font-heading); color: #ffffff; font-size: 3.5rem; margin-bottom: 20px; font-weight: 500; letter-spacing: 0.05em; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">ビジネスパーソン向け</h2>
-                <p style="color: #ffffff; font-family: var(--font-sub); font-size: 1.2rem; max-width: 800px; margin: 0 auto; letter-spacing: 0.03em;">グローバルなビジネス環境で活躍するための実践的英語習得プログラム</p>
-            </div>
-        </section>
-
-        <section style="padding: 80px 0; background-color: #ffffff;">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 60px;">
-                <div style="flex: 1 1 45%; min-width: 300px; position: relative;">
-                    <div style="position: absolute; width: 100%; height: 100%; border: 1px solid #ddd; top: 15px; left: 15px; z-index: 1;"></div>
-                    <img src="../../assets/images/en_06.gif" alt="ビジネスミーティングの様子" style="width: 100%; height: auto; object-fit: cover; position: relative; z-index: 2; box-shadow: var(--shadow-soft);">
+        <section class="price-content">
+            <section style="padding: 120px 0 60px; background-color: var(--color-primary); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(204, 0, 0, 0.9), rgba(204, 0, 0, 0.7)); z-index: 1;"></div>
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; text-align: center;">
+                    <h2 style="font-family: var(--font-heading); color: #ffffff; font-size: 3.5rem; margin-bottom: 20px; font-weight: 500; letter-spacing: 0.05em; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">ビジネスパーソン向け</h2>
+                    <p style="color: #ffffff; font-family: var(--font-sub); font-size: 1.2rem; max-width: 800px; margin: 0 auto; letter-spacing: 0.03em;">グローバルなビジネス環境で活躍するための実践的英語習得プログラム</p>
                 </div>
-                <div style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--color-secondary); margin-bottom: 25px; font-weight: 500; position: relative; padding-bottom: 15px;">
-                        <span style="position: relative; z-index: 1;">基礎英語力の底上げ</span>
-                        <span style="position: absolute; bottom: 0; left: 0; width: 80px; height: 3px; background-color: var(--color-primary);"></span>
-                    </h3>
-                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #555;">英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、英語を聞くことや話すことになれることが何よりも重要。</p>
-                    <p style="font-size: 1.05rem; line-height: 1.8; color: #555;">スピーキング、リスニングを中心に、<strong style="color: var(--color-primary);">発話することで聞き取れるようになる脳のメカニズム</strong>を利用し、英語への苦手意識や恐怖心が無くなるように基礎英語力の底上げを行います。</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section style="padding: 90px 0; background-color: var(--color-bg);">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 60px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
-                    <span>Engrowthのビジネス英語学習の特徴</span>
-                    <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
-                </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            専任のコンサルタントによる
-                            <span style="color: var(--color-primary); font-weight: 600;">毎日の学習サポート</span>
-                            <span style="font-family: var(--font-heading); display: block; text-align: center; margin: 8px 0; font-size: 1.5rem;">&amp;</span>
-                            <span style="color: var(--color-primary); font-weight: 600;">毎週のオンラインセッション</span>
-                        </div>
+            <section style="padding: 80px 0; background-color: #ffffff;">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 60px;">
+                    <div style="flex: 1 1 45%; min-width: 300px; position: relative;">
+                        <div style="position: absolute; width: 100%; height: 100%; border: 1px solid #ddd; top: 15px; left: 15px; z-index: 1;"></div>
+                        <img src="../../assets/images/en_06.gif" alt="ビジネスミーティングの様子" style="width: 100%; height: auto; object-fit: cover; position: relative; z-index: 2; box-shadow: var(--shadow-soft);">
                     </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            エングロース受講生
-                            <span style="color: var(--color-primary); font-weight: 600;">専用アプリの提供</span>
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            <span style="color: var(--color-primary); font-weight: 600;">脳科学×AI</span>の
-                            学習サービスを提供
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            アダプティブラーニングを
-                            採用した<span style="color: var(--color-primary); font-weight: 600;">カスタムカリキュラム</span>
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            世界の名門大学出身
-                            コンサルタントが
-                            <span style="color: var(--color-primary); font-weight: 600;">マンツーマン</span>であなたに伴走
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            現地で使える<span style="color: var(--color-primary); font-weight: 600;">"生きた英語"</span>の
-                            習得をサポート
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            高速化の学習プランも専任コンサルタントが提案
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            全国どこからでも<span style="color: var(--color-primary); font-weight: 600;">受講可能</span>セッションを柔軟に対応
-                        </div>
-                    </div>
-                    <div style="background: #ffffff; border-radius: 8px; padding: 40px 30px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: var(--color-primary);"></div>
-                        <div style="text-align: left; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: #555;">
-                            <span style="color: var(--color-primary); font-weight: 600;">AIによる再生</span>、発話評価で1人でも英会話練習が可能
-                        </div>
+                    <div style="flex: 1 1 45%; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--color-secondary); margin-bottom: 25px; font-weight: 500; position: relative; padding-bottom: 15px;">
+                            <span style="position: relative; z-index: 1;">基礎英語力の底上げ</span>
+                            <span style="position: absolute; bottom: 0; left: 0; width: 80px; height: 3px; background-color: var(--color-primary);"></span>
+                        </h3>
+                        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #555;">英語でのコミュニケーションに自信を持つために、まずは基礎固めから始めましょう。文法や語彙の理解を深めることよりも、英語を聞くことや話すことになれることが何よりも重要。</p>
+                        <p style="font-size: 1.05rem; line-height: 1.8; color: #555;">スピーキング、リスニングを中心に、<strong style="color: var(--color-primary);">発話することで聞き取れるようになる脳のメカニズム</strong>を利用し、英語への苦手意識や恐怖心が無くなるように基礎英語力の底上げを行います。</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-
-
-        <section style="padding: 90px 0; background-color: #ffffff;">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 50px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
-                    <span>ビジネスコースの学習時間</span>
-                    <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
-                </h3>
-                
-                <div style="display: flex; justify-content: center; margin-bottom: 30px;">
-                    <div style="display: flex; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                        <div style="padding: 15px 30px; background-color: var(--color-primary); color: #ffffff; font-family: var(--font-sub); font-weight: 500; cursor: pointer; transition: all 0.3s ease;" id="weekday-tab">平日</div>
-                        <div style="padding: 15px 30px; background-color: #f0f0f0; color: #555; font-family: var(--font-sub); font-weight: 500; cursor: pointer; transition: all 0.3s ease;" id="weekend-tab">週末</div>
-                    </div>
-                </div>
-                
-                <div style="position: relative;">
-                    <!-- 平日のスケジュール -->
-                    <div style="background-color: #ffffff; border-radius: 8px; box-shadow: var(--shadow-soft); margin-bottom: 20px; overflow: hidden;" id="weekday-content">
-                        <!-- タイムテーブルヘッダー -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee; background-color: rgba(255, 255, 255, 0.9);">
-                            <div style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; font-size: 0.9rem; color: var(--color-secondary);">時間</div>
-                            <div style="padding: 15px; font-family: var(--font-sub); font-weight: 600; font-size: 0.9rem; color: var(--color-secondary);">活動内容</div>
-                        </div>
-                        
-                        <!-- 朝の時間帯 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">7:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">起床</div>
-                        </div>
-                        
-                        <!-- 通勤時間 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">8:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                通勤時間に単語学習
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">15-20分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 仕事時間 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">9:00 - 12:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">仕事</div>
-                        </div>
-                        
-                        <!-- 昼休み -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">12:00 - 13:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                ランチタイムに単語の確認・リスニング
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">20-30分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 午後の仕事 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">13:00 - 18:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">仕事</div>
-                        </div>
-                        
-                        <!-- 帰宅通勤 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">18:00 - 19:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                通勤時間にリスニング 専任コンサルタントとチャット
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">15-20分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 夕食・休息 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">19:00 - 21:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">夕食・お風呂・リラックスタイム</div>
-                        </div>
-                        
-                        <!-- 就寝前の学習 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">21:00 - 23:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                TEDリスニング・スピーキング 週一回のセッション・シミュレーション英会話
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">30分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 就寝 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">23:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">就寝</div>
-                        </div>
-                    </div>
-                    
-                    <!-- 週末のスケジュール -->
-                    <div style="background-color: #ffffff; border-radius: 8px; box-shadow: var(--shadow-soft); margin-bottom: 20px; overflow: hidden; display: none;" id="weekend-content">
-                        <!-- タイムテーブルヘッダー -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee; background-color: rgba(255, 255, 255, 0.9);">
-                            <div style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; font-size: 0.9rem; color: var(--color-secondary);">時間</div>
-                            <div style="padding: 15px; text-align: center; background-color: rgba(255, 200, 200, 0.2); font-family: var(--font-sub); font-weight: 600; font-size: 0.9rem; color: var(--color-secondary);">土曜日</div>
-                            <div style="padding: 15px; text-align: center; background-color: rgba(255, 200, 200, 0.2); font-family: var(--font-sub); font-weight: 600; font-size: 0.9rem; color: var(--color-secondary);">日曜日</div>
-                        </div>
-                        
-                        <!-- 朝の時間帯 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">7:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">起床</div>
-                        </div>
-                        
-                        <!-- 朝の学習 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">8:00 - 9:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                英語学習・リスニング
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">30-40分</span>
-                            </div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                英語学習・リスニング
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">30-40分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 午前の自由時間 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">9:00 - 12:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">趣味やプライベートタイム</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">趣味やプライベートタイム</div>
-                        </div>
-                        
-                        <!-- 午後の学習 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">12:00 - 15:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                英会話
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">60分</span>
-                            </div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                シミュレーション英会話の復習
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">90分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 夕方の自由時間 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">15:00 - 21:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">夕食・お風呂・リラックスタイム</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">夕食・お風呂・リラックスタイム</div>
-                        </div>
-                        
-                        <!-- 就寝前の学習 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; border-bottom: 1px solid #eee;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">21:00 - 23:00</div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                TEDリスニング・スピーキング
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">60分</span>
-                            </div>
-                            <div style="padding: 15px; background-color: rgba(255, 200, 200, 0.2); font-size: 1rem; color: #555; position: relative;">
-                                週一回のセッション・シミュレーション英会話
-                                <span style="position: absolute; right: 15px; top: 15px; background-color: var(--color-primary); color: white; font-size: 0.8rem; padding: 2px 8px; border-radius: 12px;">60分</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 就寝 -->
-                        <div style="display: grid; grid-template-columns: 80px 1fr;">
-                            <div style="padding: 15px; background-color: rgba(204, 0, 0, 0.03); font-weight: 500; text-align: center; color: #666; font-size: 0.9rem;">23:00</div>
-                            <div style="padding: 15px; font-size: 1rem; color: #555;">就寝</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const weekdayTab = document.getElementById('weekday-tab');
-                const weekendTab = document.getElementById('weekend-tab');
-                const weekdayContent = document.getElementById('weekday-content');
-                const weekendContent = document.getElementById('weekend-content');
-                
-                weekdayTab.addEventListener('click', function() {
-                    weekdayTab.style.backgroundColor = 'var(--color-primary)';
-                    weekdayTab.style.color = '#ffffff';
-                    weekendTab.style.backgroundColor = '#f0f0f0';
-                    weekendTab.style.color = '#555';
-                    weekdayContent.style.display = 'block';
-                    weekendContent.style.display = 'none';
-                });
-                
-                weekendTab.addEventListener('click', function() {
-                    weekendTab.style.backgroundColor = 'var(--color-primary)';
-                    weekendTab.style.color = '#ffffff';
-                    weekdayTab.style.backgroundColor = '#f0f0f0';
-                    weekdayTab.style.color = '#555';
-                    weekendContent.style.display = 'block';
-                    weekdayContent.style.display = 'none';
-                });
-            });
-        </script>
-
-        <section style="padding: 90px 0; background-color: #ffffff;">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 50px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
-                    <span>大切なのは</span>
-                    <span style="color: var(--color-primary); font-weight: 600;">習慣化</span>
-                    <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
-                </h3>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-                    <!-- いい学習習慣を身につけるには -->
-                    <div style="padding: 30px; border-radius: 8px; background-color: #f9f9f9; position: relative;">
-                        <h4 style="font-family: var(--font-sub); color: var(--color-primary); font-size: 1.2rem; margin-bottom: 20px; text-align: center; font-weight: 600;">いい学習習慣を身につけるには</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: var(--color-primary); border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">無理なく継続できる時間帯の確保</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: var(--color-primary); border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">学習を日課化することで頭が活性化</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: var(--color-primary); border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">日本語で考えていることも英語で模索</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: var(--color-primary); border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">日常的に使うことで実践力を高める</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- 脳科学のメカニズムをレッスン -->
-                    <div style="padding: 30px; border-radius: 8px; background-color: #f9f9f9; position: relative;">
-                        <h4 style="font-family: var(--font-sub); color: var(--color-primary); font-size: 1.2rem; margin-bottom: 20px; text-align: center; font-weight: 600;">脳科学のメカニズムをレッスン</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #00b33c; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">脳の使い方を学ぶチェック</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #00b33c; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">つまずくポイントを学習法</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #00b33c; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">モチベーション維持のための方法</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- 実践で身につけられるカリキュラム -->
-                    <div style="padding: 30px; border-radius: 8px; background-color: #f9f9f9; position: relative;">
-                        <h4 style="font-family: var(--font-sub); color: var(--color-primary); font-size: 1.2rem; margin-bottom: 20px; text-align: center; font-weight: 600;">実践で身につけられるカリキュラム</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #2c75ff; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">新しい単語を使った会話練習</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #2c75ff; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">ネイティブと話すことで上達の実感</p>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-                                <span style="display: inline-block; width: 20px; height: 20px; background-color: #2c75ff; border-radius: 50%; flex-shrink: 0; margin-right: 15px; margin-top: 5px;"></span>
-                                <p style="font-size: 1rem; color: #555; margin: 0;">実際に使える自信をつけることが目標</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="padding: 90px 0; background-color: var(--color-bg);">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
-                    <span>シミュレーション英会話プログラム</span>
-                    <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
-                </h3>
-                <p style="text-align: center; font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto 50px; line-height: 1.8;">実際のビジネスシーンを想定した英会話シミュレーションを通じて、実践的なスキルを身につけます。</p>
-
-                <div style="margin-top: 60px; margin-bottom: 40px; position: relative;">
-                    <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
-                        <span>シミュレーション英会話①</span>
-                    </h4>
-                    
-                    <div style="overflow: hidden; border-radius: 8px; box-shadow: var(--shadow-soft);">
-                        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body);">
-                            <tr style="background-color: var(--color-primary); color: white;">
-                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 25%; border-right: 1px solid rgba(255,255,255,0.2);">週</th>
-                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 75%;">シミュレーションテーマ<br>(場面トピック)</th>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>1-2</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">挨拶</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>3-4</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">自己紹介</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>5-6</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">道の聞き方/聞かれた際の答え方</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>7-8</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">飛行機<br>(チェックイン、機内)</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>9-10</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ホテル<br>(チェックイン/アウト)</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>11-12</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">カフェ&レストラン<br>(予約、注文)</td>
-                            </tr>
-                        </table>
-                    </div>
-                
-                    <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
-                        <!-- 挨拶 -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">挨拶</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">基本的な挨拶を英語で練習します。時間帯や場面に応じた適切な挨拶フレーズを習得し、ビジネスシーンでも自然に使えるコミュニケーションの基礎を築きます。フォーマル/カジュアルの使い分けも含めて学習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>A:</strong> Good morning, Mr. Smith. How are you today?<br>（おはようございます、スミスさん。今日の調子はいかがですか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>B:</strong> Good morning, Ms. Tanaka. I'm doing well, thank you. And you?<br>（おはようございます、田中さん。調子は良いです、ありがとう。あなたは？）</p>
-                                        <p style="margin: 0; color: #555;"><strong>A:</strong> I'm fine, thanks. It's nice to see you again.<br>（元気です、ありがとう。また会えて嬉しいです。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 自己紹介 -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">自己紹介</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">ビジネスシーンで活用できる自己紹介の技術を学びます。名前、所属、役職に加え、自社の強みや自身の専門性を簡潔に伝えるためのフレーズを練習します。商談や会議での印象的な自己紹介を目指します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>A:</strong> Hello everyone. I'd like to introduce myself. My name is Yuki Tanaka from ABC Corporation. I'm the Sales Manager in charge of international clients. I've been with the company for 5 years, specializing in technology solutions for the finance sector. I'm looking forward to working with all of you on this project.<br>（皆さんこんにちは。自己紹介させていただきます。ABC株式会社の田中ユキです。国際クライアント担当の営業マネージャーをしています。入社5年目で、金融セクター向けの技術ソリューションを専門としています。このプロジェクトで皆さんと一緒に働けることを楽しみにしています。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 道の聞き方/聞かれた際の答え方 -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">道の聞き方/聞かれた際の答え方</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">海外で迷った時や道を尋ねられた時に役立つ英語表現を学びます。具体的な方向や場所の説明、ランドマークを使った案内方法など、明確に伝えるためのスキルを習得します。地図アプリの使い方やタクシーでの行き先の伝え方も練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>A:</strong> Excuse me, could you tell me how to get to the Central Business District?<br>（すみません、セントラルビジネス地区への行き方を教えていただけますか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>B:</strong> Certainly. Go straight for two blocks, then turn right at the traffic light. You'll see a large park on your left. The business district starts just after the park. It's about a 10-minute walk from here.<br>（もちろんです。まっすぐ2ブロック進んで、信号を右に曲がってください。左手に大きな公園が見えます。ビジネス地区は公園の直後から始まります。ここから徒歩約10分です。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>A:</strong> Thank you very much for your clear directions.<br>（わかりやすい道案内をありがとうございます。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 飛行機（チェックイン、機内） -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">飛行機（チェックイン、機内）</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">海外出張で必須となる空港・機内での英会話を学びます。チェックインカウンターでの手続きから、機内での要望伝達まで、ビジネスパーソンとして必要な表現を習得します。急な予定変更やトラブル対応にも使えるフレーズを練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Hello, may I see your passport and ticket please?<br>（こんにちは、パスポートとチケットを拝見できますか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Here you are. I'd like a window seat if possible.<br>（はい、どうぞ。可能であれば窓側の席をお願いします。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Let me check... Yes, I can assign you to seat 24A. Would you like to check any baggage?<br>（確認します...はい、24A席をご用意できます。お荷物はお預けになりますか？）</p>
-                                        <p style="margin: 0; color: #555;"><strong>You:</strong> Yes, I have one suitcase to check in and I'll keep my laptop bag as carry-on.<br>（はい、スーツケースを1つ預けて、ラップトップバッグは機内持ち込みにします。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ホテル（チェックイン/アウトなど） -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ホテル（チェックイン/アウトなど）</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">海外出張時のホテルでのやり取りに必要な英語表現を習得します。チェックインからルームサービス、チェックアウトまで、滞在中に必要な基本フレーズを学びます。予約変更や施設利用など、様々な状況に対応できる表現を練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Good evening. I have a reservation under the name Yamamoto.<br>（こんばんは。山本の名前で予約をしています。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Welcome, Mr. Yamamoto. Let me check your reservation. Could I see your ID and credit card, please?<br>（ようこそ、山本様。予約を確認いたします。身分証明書とクレジットカードを拝見できますか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Here they are. I also requested a quiet room away from the elevator, if possible.<br>（はい、どうぞ。可能であればエレベーターから離れた静かな部屋をリクエストしていました。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>Staff:</strong> Yes, I see that note here. We've assigned you to room 712 on the 7th floor, which is in a quiet area. Your room includes free Wi-Fi, and breakfast is served from 6:30 to 10:00 AM in the restaurant on the 2nd floor.<br>（はい、そのメモを確認しました。7階の712号室をご用意しました。静かなエリアにあります。お部屋には無料Wi-Fiが含まれており、朝食は2階のレストランで午前6:30から10:00までご利用いただけます。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- カフェ&レストラン（予約、注文） -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">カフェ&レストラン（予約、注文）</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">ビジネス会食や接待で使える英語表現を学びます。電話予約の取り方から、メニューの確認、注文、支払いまで、スムーズな会話ができるようになります。食事の好み、アレルギーの伝達など、細やかな配慮も含めた表現を習得します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> I'd like to make a reservation for four people tomorrow evening at 7:00 PM. It's for a business dinner.<br>（明日の夜7時に4名でビジネスディナーの予約をしたいのですが。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> Let me check our availability... Yes, we can accommodate you at 7:00 PM. Would you prefer a table near the window or in a more private area?<br>（空き状況を確認します...はい、7時にご予約可能です。窓際のテーブルと、よりプライベートなエリアのどちらがご希望ですか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> A private area would be better for our business discussion. Also, one of our guests has a seafood allergy. Could you make a note of that?<br>（ビジネスの話し合いのため、プライベートなエリアの方が良いです。また、ゲストの1人が魚介類アレルギーがあります。それをメモしていただけますか？）</p>
-                                        <p style="margin: 0; color: #555;"><strong>Staff:</strong> Certainly, I've noted the seafood allergy and reserved our quiet corner table for four at 7:00 PM tomorrow. May I have your name and contact number, please?<br>（かしこまりました。魚介類アレルギーをメモし、明日の午後7時に4名様用の静かなコーナーテーブルをご予約いたしました。お名前と連絡先をお願いできますか？）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 60px; margin-bottom: 40px; position: relative;">
-                    <h4 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 30px; text-align: center; font-weight: 500; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
-                        <span>シミュレーション英会話②</span>
-                    </h4>
-                    
-                    <div style="overflow: hidden; border-radius: 8px; box-shadow: var(--shadow-soft);">
-                        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body);">
-                            <tr style="background-color: var(--color-primary); color: white;">
-                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 25%; border-right: 1px solid rgba(255,255,255,0.2);">週</th>
-                                <th style="padding: 15px; text-align: center; font-family: var(--font-sub); font-weight: 600; width: 75%;">シミュレーションテーマ<br>(場面トピック)</th>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>13-14</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ショッピング（試着、会計）</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>15-16</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">交通機関（電車、バス）</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>17-18</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ビジネスメール</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>19-20</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ビジネスプレゼンテーション①</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500;">週<br>21-22</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">ビジネスプレゼンテーション②</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 20px; text-align: center; border-right: 1px solid #eee; font-weight: 500; background-color: #f5f5f5;">週<br>23-24</td>
-                                <td style="padding: 20px; text-align: center; color: #555;">カスタム</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="accordion-container" style="max-width: 100%; margin: 30px auto 0;">
-                        <!-- ショッピング（試着、会計） -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ショッピング（試着、会計）</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">海外でのショッピングシーンに必要な英語表現を習得します。サイズや色の確認、試着の依頼、値段交渉から支払いまで、買い物に関する実践的なフレーズを学びます。商品の返品や交換の際にも使える表現を練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Excuse me, I'd like to try on this shirt. Where are the fitting rooms?<br>（すみません、このシャツを試着したいのですが。試着室はどこですか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> The fitting rooms are right over there, at the back of the store. Would you like me to show you?<br>（試着室はそこ、店の奥にあります。ご案内しましょうか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Yes, please. Also, do you have this in a medium size? This one seems a bit large.<br>（はい、お願いします。また、これはミディアムサイズがありますか？これは少し大きいようです。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>Staff:</strong> Let me check for you. We should have medium in stock, but I'll need to verify the color you want.<br>（確認いたします。ミディアムサイズは在庫があるはずですが、ご希望の色を確認する必要があります。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 交通機関（電車、バス） -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">交通機関（電車、バス）</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">海外出張時の移動に欠かせない公共交通機関での英語表現を学びます。切符の購入方法、乗り換えの確認、遅延時の対応など、スムーズな移動をサポートする実用的なフレーズを習得します。タクシーの利用時に必要な表現も含めて練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">会話例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Excuse me, I need to go to the Central Station. Which train should I take?<br>（すみません、セントラル駅に行く必要があります。どの電車に乗ればよいですか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Staff:</strong> You need to take the Blue Line heading north. The next train leaves in about 10 minutes from platform 3.<br>（北行きのブルーラインに乗る必要があります。次の電車は3番プラットフォームから約10分後に出発します。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> Thank you. Do I need to change trains to get there?<br>（ありがとうございます。そこに行くには乗り換えが必要ですか？）</p>
-                                        <p style="margin: 0; color: #555;"><strong>Staff:</strong> No, it's a direct train. It will take about 25 minutes to reach Central Station. Make sure you get off at the third stop.<br>（いいえ、直通電車です。セントラル駅まで約25分かかります。3つ目の駅で降りるようにしてください。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ビジネスメール -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ビジネスメール</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">国際ビジネスで必須となるメールの書き方を学びます。基本的な構成から、依頼、確認、お詫びなど、状況に応じた適切な表現方法を習得します。ビジネスメールに特有の丁寧な言い回しや慣用句も練習します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">メール例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>件名:</strong> Meeting Request: Project Discussion - April 25th<br>（件名: ミーティングリクエスト: プロジェクト討議 - 4月25日）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>本文:</strong><br>Dear Mr. Johnson,<br><br>I hope this email finds you well. I am writing to request a meeting to discuss the progress of the XYZ Project that our companies are collaborating on.<br><br>We have recently completed the first phase of development and would like to share our findings with you and your team. Would you be available for a meeting on Wednesday, April 25th, at 10:00 AM (JST)? We anticipate the meeting will last approximately one hour.<br><br>Please let me know if this time works for you, or if you would prefer an alternative date or time.<br><br>I look forward to your response.<br><br>Best regards,<br>Taro Yamada<br>Project Manager<br>ABC Corporation<br><br>（ジョンソン様、<br><br>お元気のことと存じます。当社と貴社が協力して進めているXYZプロジェクトの進捗状況について話し合うための会議をリクエストいたします。<br><br>最近、開発の第一段階を完了し、その結果をあなたとチームに共有したいと考えています。4月25日水曜日の午前10時（日本時間）に会議を設定することは可能でしょうか？会議は約1時間を予定しています。<br><br>この時間があなたに都合が良いか、または別の日時が望ましいかをお知らせください。<br><br>ご返答をお待ちしております。<br><br>敬具、<br>山田太郎<br>プロジェクトマネージャー<br>ABC株式会社）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ビジネスプレゼンテーション -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">ビジネスプレゼンテーション</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">効果的なプレゼンテーションに必要な英語表現を学びます。導入から結論まで、論理的な構成で説得力のある発表ができるようになります。質疑応答での適切な受け答えも含めて練習します。また、図表やデータの説明、提案や推奨事項の伝え方など、ビジネスに特化した表現技術を習得します。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">プレゼンテーション例：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>導入部:</strong> Good morning everyone. Thank you for joining us today. I'm Keiko Sato, and I'll be presenting our company's new marketing strategy for the upcoming fiscal year.<br>（皆さんおはようございます。本日はお集まりいただきありがとうございます。佐藤恵子です。これから来年度の新しいマーケティング戦略についてプレゼンテーションをさせていただきます。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>データ説明:</strong> As you can see from this graph, our online sales have increased by 35% in the last quarter. This chart shows the breakdown by product category, with electronics accounting for the largest share at 42%.<br>（このグラフからわかるように、オンライン販売は前四半期に35%増加しました。この表は製品カテゴリ別の内訳を示しており、電子機器が最大の42%を占めています。）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>質疑応答:</strong> That's an excellent question. Based on our market research, we anticipate a 20% growth in the Asian market over the next two years. Would you like me to elaborate on the specific countries we're targeting?<br>（素晴らしいご質問です。市場調査によると、今後2年間でアジア市場は20%の成長が見込まれています。私たちがターゲットとしている特定の国々について詳しく説明しましょうか？）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- カスタム -->
-                        <div class="accordion-item" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft);">
-                            <div class="accordion-header" style="background-color: #ffffff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--color-primary);" onclick="toggleAccordion(this)">
-                                <h3 style="margin: 0; font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-secondary); font-weight: 500;">カスタム</h3>
-                                <span class="accordion-icon" style="color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease;">+</span>
-                            </div>
-                            <div class="accordion-content" style="background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px;">
-                                <div style="padding: 20px 0;">
-                                    <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0 0 15px;">あなたのビジネスニーズに合わせたカスタマイズされた英会話プログラムです。特定の業界用語、会議やミーティング、交渉、契約など、ご希望の内容に焦点を当てたレッスンを提供します。事前のカウンセリングで目標を設定し、最適な学習計画を立てていきます。</p>
-                                    
-                                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                                        <p style="font-weight: 600; color: var(--color-secondary); margin: 0 0 10px;">カスタム例 - IT業界向け：</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>You:</strong> We need to implement a more secure authentication system for our application. What are your thoughts on multi-factor authentication?<br>（私たちのアプリケーションにより安全な認証システムを実装する必要があります。多要素認証についてどう思いますか？）</p>
-                                        <p style="margin: 0 0 5px; color: #555;"><strong>Colleague:</strong> I agree that we should enhance security. Multi-factor authentication would be a good solution. We could start with email verification and then consider adding biometric options in the future.<br>（セキュリティを強化すべきという点に同意します。多要素認証は良い解決策でしょう。まずはメール認証から始めて、将来的には生体認証オプションの追加も検討できます。）</p>
-                                        <p style="margin: 0; color: #555;"><strong>You:</strong> That makes sense. Let's prepare a proposal outlining the implementation phases and estimated costs for management review.<br>（理にかなっています。実装段階と見積もりコストを概説した提案書を作成し、経営陣の検討に提出しましょう。）</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 60px; position: relative;">
-                    <h4 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
-                        <span>料金</span>
+            <section style="padding: 90px 0; background-color: var(--color-bg);">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 60px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>Engrowthのビジネス英語学習の特徴</span>
                         <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
-                    </h4>
-
-                    <div style="max-width: 900px; margin: 0 auto;">
-                        <style>
-                            .price-table {
-                                width: 100%;
-                                max-width: 900px;
-                                border-collapse: collapse;
-                                margin: 20px auto;
-                                font-family: sans-serif;
-                            }
-
-                            .month-cell {
-                                background: #d3d3d3;
-                                padding: 8px 10px;
-                                width: 100px;
-                                font-size: 16px;
-                                font-weight: 800;
-                                text-align: center;
-                                vertical-align: middle;
-                            }
-
-                            .header-cell {
-                                background: #ff7f7f;
-                                padding: 12px 30px;
-                                font-size: 20px;
-                                font-weight: 800;
-                                text-align: center;
-                                vertical-align: middle;
-                            }
-
-                            .price-cell {
-                                background: #ffe6e6;
-                                padding: 12px 30px;
-                                font-size: 16px;
-                                font-weight: 800;
-                                text-align: center;
-                                vertical-align: middle;
-                            }
-
-                            .arrow {
-                                color: #666;
-                                margin: 0 5px;
-                                font-size: 14px;
-                                display: inline-block; /* 回転のために追加 */
-                            }
-
-                            tr {
-                                height: 60px;
-                            }
-
-                            td {
-                                border: 1px solid white;
-                            }
-
-                            .note {
-                                font-size: 17px;
-                                font-weight: 600;
-                                color: #555;
-                                margin: 10px auto;
-                                text-align: center;
-                                max-width: 900px;
-                            }
-
-                            .note sup {
-                                font-size: 14px;
-                                vertical-align: super;
-                                margin-right: 2px;
-                            }
-
-                            .original-price {
-                                color: #666;
-                                font-size: 16px;
-                            }
-
-                            .discount-price {
-                                font-weight: 900;
-                                font-size: 16px;
-                            }
-                            @media screen and (max-width: 768px) {
-                                .arrow {
-                                    transform: rotate(90deg);
-                                    display: block;
-                                    margin: 5px auto;  /* 5pxから3pxに縮小 */
-                                    line-height: 1;    /* 行の高さを最小に */
-                                }
-
-                                .original-price,
-                                .discount-price {
-                                    display: block;
-                                    line-height: 1.2;  /* 行の高さを調整 */
-                                    margin: 2px 0;     /* 上下の余白を2pxに */
-                                }
-
-                                .price-cell {
-                                    padding: 8px 15px;
-                                }
-                            }
-                        </style>
-
-                        <table class="price-table">
-                            <tbody>
-                                <tr>
-                                    <td class="month-cell"></td>
-                                    <td class="header-cell">受講料</td>
-                                    <td class="header-cell">1ヶ月あたり</td>
-                                </tr>
-                                <tr>
-                                    <td class="month-cell">1ヶ月</td>
-                                    <td class="price-cell">$1,480 <sup>※1</sup></td>
-                                    <td class="price-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td class="month-cell">3ヶ月</td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$4,400</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$3,980</span>
-                                    </td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$1,480</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$1,326</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="month-cell">6ヶ月</td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$8,880</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$7,480</span>
-                                    </td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$1,480</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$1,246</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="month-cell">12ヶ月</td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$17,760</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$13,980</span>
-                                    </td>
-                                    <td class="price-cell">
-                                        <span class="original-price">$1,480</span>
-                                        <span class="arrow">→</span>
-                                        <span class="discount-price">$1,165</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="note"><sup>※1</sup> 1ヶ月プランは3ヶ月プラン以上を修了者のみが契約可</div>
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                            <div style="margin-bottom: 20px;">
+                                <i class="fas fa-comments" style="font-size: 2.5rem; color: var(--color-primary);"></i>
+                            </div>
+                            <h4 style="font-family: var(--font-sub); font-size: 1.4rem; margin-bottom: 15px; color: var(--color-secondary);">実践的な会話トレーニング</h4>
+                            <p style="line-height: 1.8; color: #555;">ビジネスシーンで実際に使用する表現やフレーズを中心に、実践的な会話力を養成します。シミュレーション形式で実際のビジネスシーンを想定した練習を行います。</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                            <div style="margin-bottom: 20px;">
+                                <i class="fas fa-user-tie" style="font-size: 2.5rem; color: var(--color-primary);"></i>
+                            </div>
+                            <h4 style="font-family: var(--font-sub); font-size: 1.4rem; margin-bottom: 15px; color: var(--color-secondary);">ビジネス特化型カリキュラム</h4>
+                            <p style="line-height: 1.8; color: #555;">プレゼンテーション、ネゴシエーション、ミーティングなど、ビジネスで必要なスキルに特化したカリキュラムを提供します。</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                            <div style="margin-bottom: 20px;">
+                                <i class="fas fa-clock" style="font-size: 2.5rem; color: var(--color-primary);"></i>
+                            </div>
+                            <h4 style="font-family: var(--font-sub); font-size: 1.4rem; margin-bottom: 15px; color: var(--color-secondary);">柔軟な学習スケジュール</h4>
+                            <p style="line-height: 1.8; color: #555;">忙しいビジネスパーソンのために、オンラインでの学習と対面レッスンを組み合わせた柔軟なスケジュールを提供します。</p>
+                        </div>
                     </div>
-                    
+                </div>
+            </section>
 
-
+            <section style="padding: 90px 0; background-color: #ffffff;">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 50px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>ビジネスコースの学習時間</span>
+                        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft); text-align: center;">
+                            <h4 style="font-family: var(--font-sub); font-size: 1.8rem; margin-bottom: 15px; color: var(--color-primary);">週2回</h4>
+                            <p style="line-height: 1.8; color: #555;">90分/回のレッスン<br>基礎固めと実践練習</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft); text-align: center;">
+                            <h4 style="font-family: var(--font-sub); font-size: 1.8rem; margin-bottom: 15px; color: var(--color-primary);">毎日30分</h4>
+                            <p style="line-height: 1.8; color: #555;">オンライン学習<br>自己学習と復習</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: var(--shadow-soft); text-align: center;">
+                            <h4 style="font-family: var(--font-sub); font-size: 1.8rem; margin-bottom: 15px; color: var(--color-primary);">月2回</h4>
+                            <p style="line-height: 1.8; color: #555;">進捗確認<br>カウンセリング</p>
+                        </div>
                     </div>
-                    
-                    <script>
-                        function toggleAccordion(element) {
-                            const content = element.nextElementSibling;
-                            const icon = element.querySelector('.accordion-icon');
-                            
-                            // 銖印の切り替え
-                            if (icon.textContent === '+') {
-                                icon.textContent = '−';  // マイナス記号
-                                icon.style.transform = 'rotate(180deg)';
-                            } else {
-                                icon.textContent = '+';
-                                icon.style.transform = 'rotate(0deg)';
-                            }
-                            
-                            // 内容の表示/非表示の切り替え
-                            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                                content.style.maxHeight = '0px';
-                            } else {
-                                content.style.maxHeight = content.scrollHeight + 'px';
-                            }
-                        }
-                    </script>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section style="padding: 100px 0; background-color: #f9f9f9; background-image: url('../../assets/images/en_06.gif'); background-size: cover; background-position: center; position: relative;">
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6);"></div>
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; text-align: center;">
-                <h3 style="font-family: var(--font-heading); color: #ffffff; font-size: 2.5rem; margin-bottom: 25px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); font-weight: 500;">無料相談・資料請求</h3>
-                <p style="color: #ffffff; max-width: 800px; margin: 0 auto 40px; font-family: var(--font-body); line-height: 1.8; font-size: 1.1rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">ビジネス英語に関するお悩みやご質問がございましたら、お気軽にご相談ください。専任コンサルタントが丁寧にお答えします。</p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="../../contact/" style="display: inline-block; background-color: var(--color-primary); color: #ffffff; text-decoration: none; font-family: var(--font-sub); font-weight: 600; padding: 16px 40px; border-radius: 4px; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid var(--color-primary); letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.2);">無料相談する</a>
-                    <a href="../../contact/" style="display: inline-block; background-color: transparent; color: #ffffff; text-decoration: none; font-family: var(--font-sub); font-weight: 600; padding: 16px 40px; border-radius: 4px; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #ffffff; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">資料を請求する</a>
+            <section style="padding: 90px 0; background-color: #ffffff;">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 50px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>大切なのは</span>
+                        <span style="color: var(--color-primary); font-weight: 600;">習慣化</span>
+                        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #555;">習慣化の重要性を詳しく紹介します。</p>
                 </div>
-            </div>
+            </section>
+
+            <section style="padding: 90px 0; background-color: var(--color-bg);">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>シミュレーション英会話プログラム</span>
+                        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; color: #555;">シミュレーション英会話プログラムの詳細を紹介します。</p>
+                </div>
+            </section>
+
+            <section style="padding: 100px 0; background-color: #f9f9f9; background-image: url('../../assets/images/en_06.gif'); background-size: cover; background-position: center; position: relative;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6);"></div>
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; text-align: center;">
+                    <h3 style="font-family: var(--font-heading); color: #ffffff; font-size: 2.5rem; margin-bottom: 25px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); font-weight: 500;">無料相談・資料請求</h3>
+                    <p style="color: #ffffff; max-width: 800px; margin: 0 auto 40px; font-family: var(--font-body); line-height: 1.8; font-size: 1.1rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">ビジネス英語に関するお悩みやご質問がございましたら、お気軽にご相談ください。専任コンサルタントが丁寧にお答えします。</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <a href="../../contact/" style="display: inline-block; background-color: var(--color-primary); color: #ffffff; text-decoration: none; font-family: var(--font-sub); font-weight: 600; padding: 16px 40px; border-radius: 4px; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid var(--color-primary); letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.2);">無料相談する</a>
+                        <a href="../../contact/" style="display: inline-block; background-color: transparent; color: #ffffff; text-decoration: none; font-family: var(--font-sub); font-weight: 600; padding: 16px 40px; border-radius: 4px; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #ffffff; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">資料を請求する</a>
+                    </div>
+                </div>
+            </section>
+
+            <section style="padding: 90px 0; background-color: #f8f9fa;">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 50px; font-weight: 500; text-align: center; position: relative; padding-bottom: 15px; display: inline-block; left: 50%; transform: translateX(-50%);">
+                        <span>料金プラン</span>
+                        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background-color: var(--color-primary);"></span>
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                        <div style="background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: var(--shadow-soft); text-align: center;">
+                            <h4 style="font-family: var(--font-sub); font-size: 1.8rem; margin-bottom: 20px; color: var(--color-primary);">スタンダードプラン</h4>
+                            <div style="font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px;">
+                                <span style="font-size: 1.2rem;">¥</span>49,800<span style="font-size: 1rem;">/月</span>
+                            </div>
+                            <ul style="text-align: left; margin-bottom: 30px;">
+                                <li style="margin-bottom: 15px; color: #555;">週2回のレッスン（90分/回）</li>
+                                <li style="margin-bottom: 15px; color: #555;">オンライン学習教材</li>
+                                <li style="margin-bottom: 15px; color: #555;">月2回のカウンセリング</li>
+                                <li style="margin-bottom: 15px; color: #555;">ビジネス英語教材</li>
+                            </ul>
+                            <a href="/contact" style="display: inline-block; padding: 15px 40px; background-color: var(--color-primary); color: #ffffff; text-decoration: none; border-radius: 30px; transition: all 0.3s ease;">お申し込み</a>
+                        </div>
+                        <div style="background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: var(--shadow-soft); text-align: center; position: relative; border: 2px solid var(--color-primary);">
+                            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background-color: var(--color-primary); color: #ffffff; padding: 5px 20px; border-radius: 20px; font-size: 0.9rem;">人気</div>
+                            <h4 style="font-family: var(--font-sub); font-size: 1.8rem; margin-bottom: 20px; color: var(--color-primary);">プレミアムプラン</h4>
+                            <div style="font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 30px;">
+                                <span style="font-size: 1.2rem;">¥</span>79,800<span style="font-size: 1rem;">/月</span>
+                            </div>
+                            <ul style="text-align: left; margin-bottom: 30px;">
+                                <li style="margin-bottom: 15px; color: #555;">週3回のレッスン（90分/回）</li>
+                                <li style="margin-bottom: 15px; color: #555;">オンライン学習教材</li>
+                                <li style="margin-bottom: 15px; color: #555;">週1回のカウンセリング</li>
+                                <li style="margin-bottom: 15px; color: #555;">ビジネス英語教材</li>
+                                <li style="margin-bottom: 15px; color: #555;">プレゼンテーション特訓</li>
+                                <li style="margin-bottom: 15px; color: #555;">ネイティブ講師との練習セッション</li>
+                            </ul>
+                            <a href="/contact" style="display: inline-block; padding: 15px 40px; background-color: var(--color-primary); color: #ffffff; text-decoration: none; border-radius: 30px; transition: all 0.3s ease;">お申し込み</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
 
@@ -1062,5 +430,35 @@
     </footer>
     
     <script src="../../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // サブメニューの開閉機能
+            const submenuTriggers = document.querySelectorAll('.has-submenu');
+            
+            submenuTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    // 他のサブメニューを閉じる
+                    submenuTriggers.forEach(otherTrigger => {
+                        if (otherTrigger !== trigger) {
+                            otherTrigger.classList.remove('active');
+                        }
+                    });
+                    
+                    // クリックされたサブメニューの開閉
+                    this.classList.toggle('active');
+                    e.stopPropagation();
+                });
+            });
+            
+            // サブメニュー以外をクリックしたときに閉じる
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.has-submenu')) {
+                    submenuTriggers.forEach(trigger => {
+                        trigger.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

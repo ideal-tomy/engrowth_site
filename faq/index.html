@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 - Engrowth Official Site</title>
+    <meta name="description" content="Engrowthのよくある質問 - 現地で使える生きた英語を学ぶ">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <!-- Webフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-heading: 'Playfair Display', 'Noto Serif JP', serif;
+            --font-body: 'Noto Serif JP', serif;
+            --font-sub: 'Josefin Sans', sans-serif;
+            --color-primary: #CC0000;
+            --color-secondary: #333333;
+            --color-bg: #f9f9f9;
+            --color-text: #333333;
+            --color-light: #ffffff;
+            --shadow-soft: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        /* ヘッダースタイル */
+        .header {
+            background-color: var(--color-light);
+            box-shadow: var(--shadow-soft);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo h1 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--color-primary);
+        }
+        
+        .logo .tagline {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            margin: 0;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* ナビゲーションスタイル */
+        .global-nav {
+            position: relative;
+        }
+        
+        .global-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .global-nav li {
+            margin: 0 1.5rem;
+            position: relative;
+        }
+        
+        .global-nav a, .global-nav span {
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .global-nav span::after {
+            content: '▼';
+            font-size: 0.8em;
+            margin-left: 0.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav .has-submenu.active span::after {
+            transform: rotate(180deg);
+        }
+        
+        .global-nav a:hover, .global-nav span:hover {
+            color: var(--color-primary);
+        }
+        
+        .global-nav a.active {
+            color: var(--color-primary);
+        }
+        
+        .global-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* サブメニュースタイル */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            min-width: 200px;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .has-submenu.active .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .submenu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .submenu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .submenu a:hover {
+            background: rgba(204, 0, 0, 0.05);
+            color: var(--color-primary);
+        }
+
+        .submenu a::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .global-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../">
+                    <h1>Engrowth Official Site</h1>
+                    <p class="tagline">海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
+                </a>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="../">トップページ</a></li>
+                    <li><a href="../vision/">ビジョン</a></li>
+                    <li class="has-submenu">
+                        <span>料金体系</span>
+                        <ul class="submenu">
+                            <li><a href="../price/business/">ビジネス</a></li>
+                            <li><a href="../price/students/">学生</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../faq/" class="active">よくある質問</a></li>
+                    <li><a href="../contact/">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="faq-content">
+            <h2>よくある質問</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Q. ここによくある質問を記載します</h3>
+                    <p>A. ここに回答を記載します。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Engrowth Official Site. All rights reserved.</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // サブメニューの開閉機能
+            const submenuTriggers = document.querySelectorAll('.has-submenu');
+            
+            submenuTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    // 他のサブメニューを閉じる
+                    submenuTriggers.forEach(otherTrigger => {
+                        if (otherTrigger !== trigger) {
+                            otherTrigger.classList.remove('active');
+                        }
+                    });
+                    
+                    // クリックされたサブメニューの開閉
+                    this.classList.toggle('active');
+                    e.stopPropagation();
+                });
+            });
+            
+            // サブメニュー以外をクリックしたときに閉じる
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.has-submenu')) {
+                    submenuTriggers.forEach(trigger => {
+                        trigger.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

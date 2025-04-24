@@ -24,14 +24,6 @@
             --color-light: #ffffff;
             --shadow-soft: 0 5px 15px rgba(0,0,0,0.08);
         }
-        body {
-            font-family: var(--font-body);
-            color: var(--color-text);
-            line-height: 1.8;
-            background-color: var(--color-light);
-            margin: 0;
-            padding: 0;
-        }
         
         /* ヘッダースタイル */
         .header {
@@ -72,34 +64,52 @@
         }
         
         /* ナビゲーションスタイル */
+        .global-nav {
+            position: relative;
+        }
+        
         .global-nav ul {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
         
         .global-nav li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
+            position: relative;
         }
         
-        .global-nav a {
+        .global-nav a, .global-nav span {
             text-decoration: none;
             color: var(--color-secondary);
-            font-weight: 700;  /* 500から700に変更して太文字に */
-            font-size: 1rem;   /* 0.9remから1remに変更してサイズを統一 */
+            font-weight: 500;
+            font-size: 0.95rem;
             padding: 0.5rem 0;
             position: relative;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .global-nav span::after {
+            content: '▼';
+            font-size: 0.8em;
+            margin-left: 0.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav .has-submenu.active span::after {
+            transform: rotate(180deg);
         }
         
-        .global-nav a:hover {
+        .global-nav a:hover, .global-nav span:hover {
             color: var(--color-primary);
         }
         
         .global-nav a.active {
             color: var(--color-primary);
-            font-weight: 700;  /* アクティブな項目も同じ太さに */
         }
         
         .global-nav a.active::after {
@@ -110,240 +120,88 @@
             width: 100%;
             height: 2px;
             background-color: var(--color-primary);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
         }
-        
-        /* ページヘッダー */
-        .page-header {
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            padding: 2rem 0;
-            margin-bottom: 4rem;
-            text-align: center;
-        }
-        
-        .page-title {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin: 0;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .page-title::after {
+
+        .global-nav a::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--color-secondary);
-        }
-        
-        /* コンテナ */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        /* セクションスタイル */
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--color-secondary);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
             height: 2px;
             background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .global-nav a:hover::after {
+            transform: scaleX(1);
         }
         
-        /* サービス紹介 */
-        .service-intro {
-            margin-bottom: 4rem;
-        }
-        
-        .service-intro .container {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .service-image {
-            flex: 1;
-        }
-        
-        .service-image img {
-            width: 100%;
+        /* サブメニュースタイル */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            min-width: 200px;
+            padding: 0.8rem 0;
             border-radius: 8px;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
         }
-        
-        .service-text {
-            flex: 1;
+
+        .has-submenu.active .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
         }
-        
-        .service-text h3 {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--color-primary);
-            margin-top: 0;
-            margin-bottom: 1rem;
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
-        
-        /* 特徴カード */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+
+        .submenu li {
+            margin: 0;
+            padding: 0;
         }
-        
-        .feature-card {
-            background-color: var(--color-light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-soft);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .text-block {
-            line-height: 1.6;
-        }
-        
-        .highlight {
-            color: var(--color-primary);
-            font-weight: 600;
+
+        .submenu a {
+            padding: 0.8rem 1.5rem;
             display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
-        
-        /* カリキュラムテーブル */
-        .curriculum-table {
-            width: 100%;
-            margin-bottom: 4rem;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .table-row {
-            display: flex;
-        }
-        
-        .table-row.header {
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            font-weight: 600;
-        }
-        
-        .table-row:nth-child(odd):not(.header) {
-            background-color: var(--color-light);
-        }
-        
-        .table-row:nth-child(even):not(.header) {
-            background-color: var(--color-light);
-        }
-        
-        .level-cell, .content-cell {
-            padding: 15px 20px;
-        }
-        
-        .level-cell {
-            flex: 0 0 120px;
-            font-weight: 500;
-        }
-        
-        .content-cell {
-            flex: 1;
-        }
-        
-        /* 留学成功への３ステップセクション */
-        .study-steps {
-            margin-bottom: 4rem;
-            background-color: var(--color-light);
-            padding: 2rem 0;
-        }
-        
-        .steps-container {
-            margin-bottom: 2rem;
-        }
-        
-        .step-card {
-            background-color: var(--color-light);
-            border-radius: 8px;
-            box-shadow: var(--shadow-soft);
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .step-highlight {
-            font-weight: 600;
+
+        .submenu a:hover {
+            background: rgba(204, 0, 0, 0.05);
             color: var(--color-primary);
-            font-size: 1.2rem;
-            margin: 10px 0;
         }
-        
-        .study-description {
-            background-color: var(--color-light);
-            border-radius: 8px;
-            box-shadow: var(--shadow-soft);
-            padding: 1.5rem;
+
+        .submenu a::after {
+            display: none;
         }
-        
-        .study-description h4 {
-            color: var(--color-primary);
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .study-description h5 {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .essay-features, .support-features, .benefits {
-            padding-left: 20px;
-            margin: 1rem 0;
-        }
-        
-        .essay-features li, .support-features li {
-            margin-bottom: 8px;
-            position: relative;
-        }
-        
-        .essay-features li:before, .support-features li:before {
-            content: '\2022';  /* ブレットポイント */
-            color: var(--color-primary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-        
-        .benefits li {
-            margin-bottom: 8px;
-            list-style-type: none;
+
+        @media (max-width: 768px) {
+            .global-nav {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -351,31 +209,26 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <a href="/">
+                <a href="../../">
                     <h1>Engrowth Official Site</h1>
                     <p class="tagline">海外大学在籍/出身の専属コンサルタントから現地で使える生きた英語を学ぶ</p>
                 </a>
             </div>
             <nav class="global-nav">
                 <ul>
-                    <li><a href="/">トップページ</a></li>
-                    <li><a href="/vision/">ビジョン</a></li>
+                    <li><a href="../../">トップページ</a></li>
+                    <li><a href="../../vision/">ビジョン</a></li>
                     <li class="has-submenu">
                         <span>料金体系</span>
                         <ul class="submenu">
-                            <li><a href="/price/business/">ビジネス</a></li>
-                            <li><a href="/price/students/" class="active">学生</a></li>
+                            <li><a href="../../price/business/">ビジネス</a></li>
+                            <li><a href="../../price/students/" class="active">学生</a></li>
                         </ul>
                     </li>
-                    <li><a href="/faq/">よくある質問</a></li>
-                    <li><a href="/contact/">お問い合わせ</a></li>
+                    <li><a href="../../faq/">よくある質問</a></li>
+                    <li><a href="../../contact/">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="メニュー">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
@@ -998,5 +851,35 @@
 </footer>
     
 <script src="../../assets/js/main.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // サブメニューの開閉機能
+        const submenuTriggers = document.querySelectorAll('.has-submenu');
+        
+        submenuTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                // 他のサブメニューを閉じる
+                submenuTriggers.forEach(otherTrigger => {
+                    if (otherTrigger !== trigger) {
+                        otherTrigger.classList.remove('active');
+                    }
+                });
+                
+                // クリックされたサブメニューの開閉
+                this.classList.toggle('active');
+                e.stopPropagation();
+            });
+        });
+        
+        // サブメニュー以外をクリックしたときに閉じる
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.has-submenu')) {
+                submenuTriggers.forEach(trigger => {
+                    trigger.classList.remove('active');
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
